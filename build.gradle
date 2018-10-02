@@ -32,3 +32,7 @@ dependencies {
 	compile group: 'org.masukomi', name: 'aspirin', version: '0.11.01'
 	compile group: 'org.simplejavamail', name: 'simple-java-mail', version: '5.0.4'
 }
+
+bootRun {
+	systemProperties System.properties
+}
