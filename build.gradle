@@ -1,38 +1,38 @@
-buildscript {
-	ext {
-		springBootVersion = '2.0.5.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-group = 'io.github.devaprasadh'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+group = 'io.github.devatherock'
+version = '0.1.0'
 
 repositories {
-	mavenCentral()
+    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	
-	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
-	compile group: 'org.masukomi', name: 'aspirin', version: '0.11.01'
-	compile group: 'org.simplejavamail', name: 'simple-java-mail', version: '5.0.4'
+    def lombokVersion = '1.18.12'
+
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+    implementation group: 'org.masukomi', name: 'aspirin', version: '0.11.01'
+    implementation group: 'org.simplejavamail', name: 'simple-java-mail', version: '5.5.1'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.1.5.Final'
+
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.4.1'
 }
 
 bootRun {
-	systemProperties System.properties
+    systemProperties System.properties
+}
+
+springBoot {
+    buildInfo()
 }
