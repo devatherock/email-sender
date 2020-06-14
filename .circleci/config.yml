@@ -51,8 +51,7 @@ jobs:
           paths:
             - docker
   publish:
-    docker:
-      - image: docker:19.03.6
+    executor: heroku/default
     <<: *resource_class  
     <<: *work_directory
     steps:
