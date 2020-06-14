@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Build and push the docker image to registry.heroku.com
           command: |
-            TAG=0.1.0
+            TAG=0.1.1
             docker build -t devatherock/email-sender:$TAG docker
             docker tag devatherock/email-sender:$TAG registry.heroku.com/smtp-email-sender-api/web
             docker tag devatherock/email-sender:$TAG devatherock/email-sender:latest

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.1] - 2020-06-14
+### Changed
+- Let emails be sent with from address in request, when using the embedded SMTP server
+
 ## [0.1.0] - 2020-06-14
 ### Added
 - Initial version

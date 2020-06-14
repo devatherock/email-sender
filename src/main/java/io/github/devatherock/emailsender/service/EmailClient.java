@@ -90,7 +90,11 @@ public class EmailClient {
         if (null != config.getSmtp().getFromAddress()) {
             emailBuilder.from(config.getSmtp().getFromAddress().getName(),
                     config.getSmtp().getFromAddress().getEmail());
-        } else {
+        }
+
+        // If using the embedded SMTP server, let emails be sent with from address in request
+        if (null != emailSendRequest.getFrom() && (null == config.getSmtp().getFromAddress() ||
+                config.getSmtp().isEmbedded())) {
             emailBuilder.from(emailSendRequest.getFrom().getName(), emailSendRequest.getFrom().getEmail());
         }
 

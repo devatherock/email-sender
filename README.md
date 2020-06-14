@@ -9,6 +9,21 @@ REST API to send emails. Sends the email using the configured SMTP server.
 Refer the swagger [spec](https://smtp-email-sender-api.herokuapp.com/swagger/v3/api-docs) or the swagger 
 [UI](https://smtp-email-sender-api.herokuapp.com/swagger-ui.html)
 
+### Sample YAML request payload
+```yaml
+to:
+ - email: test.email@mailinator.com
+subject: Test email
+html: |
+  <!DOCTYPE html>
+  <html>
+    <body>
+       <h3>Hello, World!</h3>
+    </body>
+  </html>
+text: This is a test email
+```
+
 ## Configurable properties
 
 | Name                                  |   Type       |   Default        |   Description                                                                     |
