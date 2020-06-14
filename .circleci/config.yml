@@ -1,0 +1,118 @@
+jdk_image: &jdk_image
+  docker:
+    - image: circleci/openjdk:11-jdk
+
+slack_image: &slack_image
+  docker:
+    - image: devatherock/simple-slack:0.4.0
+
+orbs:
+  heroku: circleci/heroku@1.0.1
+
+work_directory: &work_directory
+  working_directory: ~/email-sender
+
+resource_class: &resource_class
+  resource_class: small
+
+version: 2.1
+jobs:
+  test:
+    <<: *jdk_image
+    <<: *resource_class
+    <<: *work_directory
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - run: |
+          ./gradlew build --no-daemon
+  build:
+    <<: *jdk_image
+    <<: *resource_class
+    <<: *work_directory
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
+      - run: |
+          ./gradlew build --no-daemon
+          cp build/libs/email-sender-*.jar docker/
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+      - persist_to_workspace:
+          root: ~/email-sender
+          paths:
+            - docker
+  publish:
+    docker:
+      - image: docker:19.03.6
+    <<: *resource_class  
+    <<: *work_directory
+    steps:
+      - checkout
+      - heroku/install
+      - setup_remote_docker
+      - attach_workspace:
+          at: ~/email-sender
+      - run:
+          name: Build and push the docker image to registry.heroku.com
+          command: |
+            TAG=0.1.0
+            docker build -t devatherock/email-sender:$TAG docker
+            docker tag devatherock/email-sender:$TAG registry.heroku.com/smtp-email-sender-api/web
+            docker tag devatherock/email-sender:$TAG devatherock/email-sender:latest
+            heroku container:login
+            docker push registry.heroku.com/smtp-email-sender-api/web
+            heroku container:release -a smtp-email-sender-api web
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker push devatherock/email-sender:$TAG
+            docker push devatherock/email-sender:latest
+
+  notify_success:
+    <<: *slack_image
+    <<: *resource_class
+    environment:
+      TEXT: "Success: {{.CircleBuildUrl}} by {{.CircleUsername}}"
+    steps:
+      - run: /bin/simpleslack -c "#33ad7f"
+  notify_failure:
+    <<: *slack_image
+    <<: *resource_class
+    environment:
+      TEXT: "Failure: {{.CircleBuildUrl}} by {{.CircleUsername}}"
+    steps:
+      - run:
+          name: Failure notification
+          command: /bin/simpleslack -c "#a1040c"
+          when: on_fail
+
+workflows:
+  version: 2.1
+  build_publish:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - publish:
+          requires:
+            - build
+      - notify_success:
+          requires:
+            - publish
+      - notify_failure:
+          requires:
+            - publish
+  pr_check:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: master
