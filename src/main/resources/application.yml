@@ -4,4 +4,11 @@ server:
     enabled: true
 logging:
   level:
-    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG    
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+management:
+  endpoints:
+    web:
+      exposure.include:
+        - metrics
+        - health
+        - info

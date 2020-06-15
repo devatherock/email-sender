@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Build and push the docker image to registry.heroku.com
           command: |
-            TAG=0.1.1
+            TAG=0.1.2
             docker build -t devatherock/email-sender:$TAG docker
             docker tag devatherock/email-sender:$TAG registry.heroku.com/smtp-email-sender-api/web
             docker tag devatherock/email-sender:$TAG devatherock/email-sender:latest
@@ -80,7 +80,7 @@ jobs:
     environment:
       TEXT: "Success: {{.CircleBuildUrl}} by {{.CircleUsername}}"
     steps:
-      - run: /bin/simpleslack -c "#33ad7f"
+      - run: /bin/simpleslack -c "#33ad7f" || true
   notify_failure:
     <<: *slack_image
     <<: *resource_class
@@ -89,7 +89,7 @@ jobs:
     steps:
       - run:
           name: Failure notification
-          command: /bin/simpleslack -c "#a1040c"
+          command: /bin/simpleslack -c "#a1040c" || true
           when: on_fail
 
 workflows:
