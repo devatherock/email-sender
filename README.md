@@ -3,7 +3,7 @@
 [![Docker Image Size](https://img.shields.io/docker/image-size/devatherock/email-sender.svg?sort=date)](https://hub.docker.com/r/devatherock/email-sender/)
 [![Docker Image Layers](https://img.shields.io/microbadger/layers/devatherock/email-sender.svg)](https://microbadger.com/images/devatherock/email-sender)
 # email-sender
-REST API to send emails. Sends the email using the configured SMTP server.
+REST API to send emails. Sends the email using the configured SMTP server or an embedded [aspirin](https://github.com/masukomi/aspirin) server
 
 ## API Reference
 Refer the swagger [spec](https://smtp-email-sender-api.herokuapp.com/swagger/v3/api-docs) or the swagger 
