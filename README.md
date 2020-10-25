@@ -1,7 +1,9 @@
 [![CircleCI](https://circleci.com/gh/devatherock/email-sender.svg?style=svg)](https://circleci.com/gh/devatherock/email-sender)
+[![Version](https://img.shields.io/docker/v/devatherock/email-sender?sort=date)](https://hub.docker.com/r/devatherock/email-sender/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/devatherock/email-sender.svg)](https://hub.docker.com/r/devatherock/email-sender/)
 [![Docker Image Size](https://img.shields.io/docker/image-size/devatherock/email-sender.svg?sort=date)](https://hub.docker.com/r/devatherock/email-sender/)
 [![Docker Image Layers](https://img.shields.io/microbadger/layers/devatherock/email-sender.svg)](https://microbadger.com/images/devatherock/email-sender)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # email-sender
 REST API to send emails. Sends the email using the configured SMTP server or an embedded [aspirin](https://github.com/masukomi/aspirin) server
 
