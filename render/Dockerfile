@@ -1,1 +1,1 @@
-FROM devatherock/email-sender:0.1.2
+FROM devatherock/email-sender:0.2.0

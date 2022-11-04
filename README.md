@@ -7,8 +7,8 @@
 REST API to send emails. Sends the email using the configured SMTP server or an embedded [aspirin](https://github.com/masukomi/aspirin) server
 
 ## API Reference
-Refer the swagger [spec](https://smtp-email-sender-api.herokuapp.com/swagger/v3/api-docs) or the swagger 
-[UI](https://smtp-email-sender-api.herokuapp.com/swagger-ui.html)
+Refer the swagger [spec](https://email-sender-44uh.onrender.com/v3/api-docs) or the swagger 
+[UI](https://email-sender-44uh.onrender.com/swagger-ui.html)
 
 ### Sample YAML request payload
 ```yaml
