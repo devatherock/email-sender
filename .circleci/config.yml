@@ -1,13 +1,9 @@
 slack_image: &slack_image
   docker:
-    - image: devatherock/simple-slack:0.4.0
+    - image: devatherock/simple-slack:0.7.0
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-
-orbs:
-  gradle: circleci/gradle@2.2.0
-  heroku: circleci/heroku@1.0.1
 
 work_directory: &work_directory
   working_directory: ~/email-sender
@@ -23,91 +19,152 @@ executors:
           username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
     <<: *resource_class
-    <<: *work_directory  
+    <<: *work_directory
+    
+release_filter: &release_filter
+  filters:
+    branches:
+      only: non-existent-branch
+    tags:
+      only: /^v[0-9\.]+$/
 
 version: 2.1
 jobs:
-  publish:
-    executor: heroku/default
-    <<: *resource_class  
-    <<: *work_directory
+  test:
+    executor: jdk-executor
     steps:
       - checkout
-      - heroku/install
+      - attach_workspace:
+          at: ~/email-sender
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies
+      - run: |
+          ./gradlew check
+      - store_test_results:
+          path: build/test-results
+
+  build:
+    executor: jdk-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/email-sender
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies
+      - run: |
+          ./gradlew build
+          cp build/libs/email-sender-*.jar docker/
+      - persist_to_workspace:
+          root: ~/email-sender
+          paths:
+            - build
+            - docker
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+      - store_test_results:
+          path: build/test-results
+
+  publish:
+    executor: jdk-executor
+    steps:
+      - checkout
       - setup_remote_docker
       - attach_workspace:
           at: ~/email-sender
       - run:
-          name: Build and push the docker image to registry.heroku.com
+          name: Build and push the docker image
           command: |
-            TAG=0.1.2
+            TAG=${CIRCLE_SHA1:0:8}
             docker build -t devatherock/email-sender:$TAG docker
-            docker tag devatherock/email-sender:$TAG registry.heroku.com/smtp-email-sender-api/web
             docker tag devatherock/email-sender:$TAG devatherock/email-sender:latest
-            heroku container:login
-            docker push registry.heroku.com/smtp-email-sender-api/web
-            heroku container:release -a smtp-email-sender-api web
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push devatherock/email-sender:$TAG
             docker push devatherock/email-sender:latest
 
-  notify_success:
+  publish_release:
+    executor: jdk-executor
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: ~/email-sender
+      - run: |
+          TAG=${CIRCLE_TAG#v}
+          DEV_TAG=${CIRCLE_SHA1:0:8}
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker pull devatherock/email-sender:$DEV_TAG
+          docker tag devatherock/email-sender:$DEV_TAG devatherock/email-sender:$TAG
+          docker push devatherock/email-sender:$TAG
+
+  deploy:
+    executor: jdk-executor
+    steps:
+      - run:
+          name: Trigger deployment to render.com
+          command: |
+            curl $RENDER_DEPLOY_HOOK
+
+  notify:
     <<: *slack_image
     <<: *resource_class
     environment:
       TEXT: "Success: {{.CircleBuildUrl}} by {{.CircleUsername}}"
+      CHANNEL: general
+      TITLE: "Build completed"
     steps:
       - run: /bin/simpleslack -c "#33ad7f" || true
-  notify_failure:
-    <<: *slack_image
-    <<: *resource_class
-    environment:
-      TEXT: "Failure: {{.CircleBuildUrl}} by {{.CircleUsername}}"
-    steps:
-      - run:
-          name: Failure notification
-          command: /bin/simpleslack -c "#a1040c" || true
-          when: on_fail
 
 workflows:
   version: 2.1
   build_publish:
     jobs:
-      - gradle/run:
-          executor: jdk-executor
+      - build:
           context:
             - docker-credentials
           filters:
             branches:
               only: master
-          post-steps:
-            - run: cp build/libs/email-sender-*.jar docker/
-            - persist_to_workspace:
-                root: ~/email-sender
-                paths:
-                  - docker
       - publish:
           context:
             - docker-credentials
-            - heroku-credentials
           requires:
-            - gradle/run
-      - notify_success:
+            - build
+      - notify:
           context:
             - docker-credentials
             - slack-webhook
           requires:
             - publish
-      - notify_failure:
+            
+  release:
+    jobs:
+      - publish_release:
+          context:
+            - docker-credentials
+          <<: *release_filter
+      - deploy:
+          context:
+            - docker-credentials
+          <<: *release_filter
+          requires:
+            - publish_release
+      - notify:
           context:
             - docker-credentials
             - slack-webhook
+          <<: *release_filter
           requires:
-            - publish
+            - deploy
+            
   pr_check:
     jobs:
-      - gradle/run:
-          executor: jdk-executor
+      - test:
           context:
             - docker-credentials
           filters:
