@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+### Added
+- Config required to deploy to `render.com`
+
+### Removed
+- Deployment to heroku
+
 ## [0.1.2] - 2020-06-14
 ### Changed
 - Enabled `/metrics` endpoint to monitor memory utilization
