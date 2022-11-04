@@ -6,3 +6,19 @@ services:
     autoDeploy: false
     dockerfilePath: ./render/Dockerfile
     dockerContext: ./render
+    envVars:
+      - key: EMAILSENDER_SMTP_EMBEDDED
+        value: true
+      - key: EMAILSENDER_SMTP_FROM_ADDRESS_EMAIL
+        value: devatherock@devatherock.github.io
+      - key: EMAILSENDER_SMTP_FROM_ADDRESS_NAME
+        value: Email.Sender
+      - key: EMAILSENDER_SMTP_HOST
+        value: smtp.sendgrid.net
+      - key: EMAILSENDER_SMTP_PASSWORD
+        sync: false
+      - key: EMAILSENDER_SMTP_USERNAME
+        value: apikey
+      - key: JAVA_TOOL_OPTIONS
+        value: -Xss256k -Xmx128m        
+        
