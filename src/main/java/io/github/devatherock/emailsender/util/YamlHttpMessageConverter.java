@@ -9,11 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.AbstractHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
-
 import org.yaml.snakeyaml.Yaml;
 
 /**
- * {@link org.springframework.http.converter.HttpMessageConverter} to produce/consume YAML
+ * {@link org.springframework.http.converter.HttpMessageConverter} to
+ * produce/consume YAML
  *
  * @param <T>
  */

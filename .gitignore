@@ -2,6 +2,8 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 *.jar
+code-formatter.xml
+checkstyle.xml
 
 ### STS ###
 .apt_generated
