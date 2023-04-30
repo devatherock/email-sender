@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 ### Added
+- Unit tests
+
+### Changed
+- Upgraded gradle to `6.9.4`
+
+## [0.2.0] - 2022-11-04
+### Added
 - Config required to deploy to `render.com`
 
 ### Removed

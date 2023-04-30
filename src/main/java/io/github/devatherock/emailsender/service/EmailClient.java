@@ -1,8 +1,12 @@
 package io.github.devatherock.emailsender.service;
 
-import io.github.devatherock.emailsender.EmailSenderProperties;
-import io.github.devatherock.emailsender.model.EmailSendRequest;
-import lombok.RequiredArgsConstructor;
+import java.util.Optional;
+import java.util.UUID;
+
+import javax.annotation.PostConstruct;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.masukomi.aspirin.Aspirin;
 import org.simplejavamail.converter.EmailConverter;
 import org.simplejavamail.email.Email;
@@ -14,31 +18,21 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.PostConstruct;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.util.UUID;
+import io.github.devatherock.emailsender.config.EmailSenderProperties;
+import io.github.devatherock.emailsender.model.EmailSendRequest;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Service to send emails
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class EmailClient {
+    private final Optional<Mailer> mailer;
     private final EmailSenderProperties config;
-    private Mailer mailer;
-
-    /**
-     * Initializes connection to an SMTP server when embedded SMTP isn't enabled
-     */
-    @PostConstruct
-    public void init() {
-        if (!config.getSmtp().isEmbedded()) {
-            mailer = MailerBuilder
-                    .withSMTPServer(config.getSmtp().getHost(), config.getSmtp().getPort(),
-                            config.getSmtp().getUsername(), config.getSmtp().getPassword()).buildMailer();
-        }
-    }
 
     /**
      * Sends an email out
@@ -53,13 +47,17 @@ public class EmailClient {
 
         try {
             if (config.getSmtp().isEmbedded()) {
+                LOGGER.debug("Sending email using embedded SMTP server");
+
                 MimeMessage message = EmailConverter.emailToMimeMessage(email);
                 contentId = UUID.randomUUID().toString();
                 message.setContentID(contentId);
                 id = message.getMessageID();
                 Aspirin.add(message);
             } else {
-                mailer.sendMail(email);
+                LOGGER.debug("Sending email using external SMTP server");
+
+                mailer.get().sendMail(email);
                 id = email.getId();
             }
         } catch (MessagingException e) {
@@ -92,7 +90,8 @@ public class EmailClient {
                     config.getSmtp().getFromAddress().getEmail());
         }
 
-        // If using the embedded SMTP server, let emails be sent with from address in request
+        // If using the embedded SMTP server, let emails be sent with from address in
+        // request
         if (null != emailSendRequest.getFrom() && (null == config.getSmtp().getFromAddress() ||
                 config.getSmtp().isEmbedded())) {
             emailBuilder.from(emailSendRequest.getFrom().getName(), emailSendRequest.getFrom().getEmail());

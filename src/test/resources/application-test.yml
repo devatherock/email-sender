@@ -1,0 +1,5 @@
+emailsender:
+  smtp:
+    host: smtp.sendgrid.net
+    username: apikey
+    password: testpwd
