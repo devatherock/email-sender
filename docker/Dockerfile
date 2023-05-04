@@ -1,7 +1,7 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM eclipse-temurin:17.0.7_7-jre-alpine
 
 LABEL maintainer="devatherock@gmail.com"
-LABEL io.github.devatherock.version="0.1.0"
+LABEL io.github.devatherock.version="0.3.0"
 
 COPY email-sender-*.jar /emailsender.jar
 

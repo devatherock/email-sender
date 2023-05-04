@@ -17,9 +17,9 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.ContextConfiguration
 
 import io.github.devatherock.emailsender.EmailSenderApplication
-import io.github.devatherock.emailsender.service.EmailClient
 
 import spock.lang.Specification
 import spock.mock.DetachedMockFactory
@@ -30,6 +30,7 @@ import spock.mock.DetachedMockFactory
 @ActiveProfiles('test')
 @SpringBootTest(classes = [EmailSenderApplication, TestConfig],
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@ContextConfiguration // https://github.com/spockframework/spock/issues/1539
 class EmailControllerSpec extends Specification {
 
     @Autowired

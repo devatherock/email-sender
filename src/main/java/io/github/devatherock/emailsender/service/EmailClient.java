@@ -3,7 +3,6 @@ package io.github.devatherock.emailsender.service;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -13,7 +12,6 @@ import org.simplejavamail.email.Email;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.email.EmailPopulatingBuilder;
 import org.simplejavamail.mailer.Mailer;
-import org.simplejavamail.mailer.MailerBuilder;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;

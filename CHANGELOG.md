@@ -2,10 +2,15 @@
 
 ## [Unreleased]
 ### Added
-- Unit tests
+- [#6](https://github.com/devatherock/email-sender/issues/6): Unit tests
+- Dependency check plugin
 
 ### Changed
-- Upgraded gradle to `6.9.4`
+- Upgraded gradle to `7.6.1`
+- Upgraded spring boot to `3.0.6`
+- Upgraded snakeyaml to `2.0`
+- Upgraded groovy to `4.0.11`
+- Upgraded java to `17`
 
 ## [0.2.0] - 2022-11-04
 ### Added
