@@ -4,14 +4,13 @@ import static io.swagger.v3.oas.annotations.media.Schema.AccessMode.READ_ONLY;
 
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
-
 import org.springframework.util.CollectionUtils;
 
 import io.github.devatherock.emailsender.config.EmailSenderProperties.Contact;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,16 +1,15 @@
 package io.github.devatherock.emailsender.config;
 
-import javax.validation.Valid;
-import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -67,8 +66,8 @@ public class EmailSenderProperties {
      */
     @AssertTrue(message = "SMTP server details missing")
     public boolean isValidSmtpConfig() {
-        return smtp.embedded || !(StringUtils.isEmpty(smtp.username) || StringUtils.isEmpty(smtp.password)
-                || StringUtils.isEmpty(smtp.host));
+        return smtp.embedded || (StringUtils.hasLength(smtp.username) && StringUtils.hasLength(smtp.password)
+                && StringUtils.hasLength(smtp.host));
     }
 
     /**
