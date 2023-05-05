@@ -4,6 +4,7 @@
 ### Added
 - [#6](https://github.com/devatherock/email-sender/issues/6): Unit tests
 - Dependency check plugin
+- Used [Wiser](https://github.com/voodoodyne/subethasmtp/blob/master/Wiser.md) for integration tests
 
 ### Changed
 - Upgraded gradle to `7.6.1`
