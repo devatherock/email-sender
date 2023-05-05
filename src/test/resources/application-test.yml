@@ -1,5 +1,6 @@
 emailsender:
   smtp:
-    host: smtp.sendgrid.net
+    host: localhost
     username: apikey
     password: testpwd
+    port: 2500

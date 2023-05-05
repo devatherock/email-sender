@@ -73,6 +73,7 @@ public class EmailSenderAppConfig {
      * @param config
      * @return a mailer
      */
+    @Bean
     @ConditionalOnProperty(name = "emailsender.smtp.embedded", havingValue = "false")
     public Mailer mailer(EmailSenderProperties config) {
         return MailerBuilder

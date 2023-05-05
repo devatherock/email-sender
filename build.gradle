@@ -38,6 +38,7 @@ dependencies {
     testImplementation group: 'org.spockframework', name: 'spock-core', version: spockVersion
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: spockVersion
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testImplementation group: 'org.subethamail', name: 'subethasmtp', version: '3.1.7'
 }
 
 bootRun {

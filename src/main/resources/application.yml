@@ -12,3 +12,6 @@ management:
         - metrics
         - health
         - info
+emailsender:
+  smtp:
+    embedded: false
