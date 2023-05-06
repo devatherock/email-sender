@@ -49,6 +49,11 @@ springBoot {
     buildInfo()
 }
 
+// To be able to identify the fat jar in dockerfile with spring boot 2.5+
+tasks.named('bootJar') {
+    archiveClassifier = 'boot'
+}
+
 test {
     useJUnitPlatform()
 }
