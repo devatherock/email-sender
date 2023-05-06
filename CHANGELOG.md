@@ -7,11 +7,10 @@
 - Used [Wiser](https://github.com/voodoodyne/subethasmtp/blob/master/Wiser.md) for integration tests
 
 ### Changed
-- Upgraded gradle to `7.6.1`
+- Upgraded gradle to `7.6.1` and java to `17`
 - Upgraded spring boot to `3.0.6`
 - Upgraded snakeyaml to `2.0`
 - Upgraded groovy to `4.0.11`
-- Upgraded java to `17`
 
 ## [0.2.0] - 2022-11-04
 ### Added
