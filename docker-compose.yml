@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+
+  email-sender:
+    image: devatherock/email-sender:latest
+    network_mode: "host"
+    environment:
+      EMAILSENDER_SMTP_HOST: localhost
+      EMAILSENDER_SMTP_USERNAME: apikey
+      EMAILSENDER_SMTP_PASSWORD: testpwd
+      EMAILSENDER_SMTP_PORT: 2500

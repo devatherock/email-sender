@@ -1,12 +1,14 @@
 <configuration>
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d [%.-35thread] %X{id} %-5level %logger{35} - %msg%n
-            </pattern>
-        </encoder>
-    </appender>
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- spotless:off -->
+			<pattern>%d [%.-35thread] %-5level %logger{36} - %msg%n</pattern>
+			<!-- spotless:on -->
+		</encoder>
+	</appender>
 
-    <root level="info">
-        <appender-ref ref="STDOUT"/>
-    </root>
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
 </configuration>

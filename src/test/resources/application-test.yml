@@ -4,3 +4,8 @@ emailsender:
     username: apikey
     password: testpwd
     port: 2500
+server:
+  port: 8091
+test:
+  server:
+    url: http://localhost:8091
