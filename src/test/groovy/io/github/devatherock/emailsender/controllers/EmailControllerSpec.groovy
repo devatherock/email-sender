@@ -6,6 +6,8 @@ import javax.mail.Message.RecipientType
 import groovy.json.JsonOutput
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.autoconfigure.web.ServerProperties
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
@@ -25,17 +27,16 @@ import spock.lang.Specification
 /**
  * Test class for {@link EmailController} class
  */
-@ActiveProfiles('test')
-@SpringBootTest(classes = [EmailSenderApplication],
-        webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
-@ContextConfiguration // https://github.com/spockframework/spock/issues/1539
-class EmailControllerSpec extends Specification {
+abstract class EmailControllerSpec extends Specification {
 
     @Shared
     Wiser wiser = new Wiser()
 
     @Autowired
     TestRestTemplate restTemplate
+
+    @Value('${test.server.url}')
+    String serverUrl
 
     void setupSpec() {
         wiser.setPort(2500)
@@ -86,8 +87,9 @@ class EmailControllerSpec extends Specification {
         headers.setAccept([MediaType.APPLICATION_JSON])
 
         when:
-        ResponseEntity response = restTemplate.postForEntity('/email/v1',
-                new HttpEntity(JsonOutput.toJson(request), headers), String)
+        ResponseEntity response = restTemplate.postForEntity(
+                "${serverUrl}/email/v1", new HttpEntity(JsonOutput.toJson(request), headers), String
+        )
 
         then:
         response.statusCode.value() == 201
@@ -108,7 +110,7 @@ class EmailControllerSpec extends Specification {
         verifyAddress(message.mimeMessage.getRecipients(RecipientType.CC)[0], 'Test.Cc', 'cc@test.com')
     }
 
-    private void verifyAddress(Address address, String name, String email) {
+    protected void verifyAddress(Address address, String name, String email) {
         assert address.personal == name
         assert address.address == email
     }

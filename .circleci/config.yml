@@ -27,9 +27,42 @@ release_filter: &release_filter
       only: non-existent-branch
     tags:
       only: /^v[0-9\.]+$/
+     
+pr_filter: &pr_filter
+  filters:
+    branches:
+      ignore: master
 
 version: 2.1
 jobs:
+  changelog_updater:
+    docker:
+    - image: devatherock/changelog-updater:latest
+      auth:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+    <<: *resource_class
+    environment:
+      VELA_BUILD_AUTHOR: "renovate[bot]"
+      VELA_BUILD_AUTHOR_EMAIL: "29139614+renovate[bot]@users.noreply.github.com"
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "4a:86:fe:0e:c3:0e:ad:0d:1d:5c:3e:48:cf:28:39:5d"
+      - checkout
+      - run: sh /scripts/entry-point.sh
+      
+  validate_yamls:
+    docker:
+      - image: devatherock/drone-yaml-validator:2.1.0
+        auth:
+          username: $DOCKER_USERNAME
+          password: $DOCKER_PASSWORD
+    <<: *work_directory
+    steps:
+      - checkout
+      - run: sh /scripts/entry-point.sh
+
   test:
     executor: jdk-executor
     steps:
@@ -86,6 +119,18 @@ jobs:
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push devatherock/email-sender:$TAG
             docker push devatherock/email-sender:latest
+            
+  integration_test:
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/email-sender
+      - run: |
+          make integration-test
+      - store_test_results:
+          path: build/test-results
 
   publish_release:
     executor: jdk-executor
@@ -124,23 +169,33 @@ workflows:
   version: 2.1
   build_publish:
     jobs:
-      - build:
+      - validate_yamls:
           context:
             - docker-credentials
           filters:
             branches:
               only: master
+      - build:
+          context:
+            - docker-credentials
+          requires:
+            - validate_yamls
       - publish:
           context:
             - docker-credentials
           requires:
             - build
+      - integration_test:
+          context:
+            - docker-credentials
+          requires:
+            - publish
       - notify:
           context:
             - docker-credentials
             - slack-webhook
           requires:
-            - publish
+            - integration_test
             
   release:
     jobs:
@@ -164,9 +219,19 @@ workflows:
             
   pr_check:
     jobs:
+      - changelog_updater:
+          context:
+            - docker-credentials
+            - changelog-updater-credentials
+          <<: *pr_filter
+      - validate_yamls:
+          context:
+            - docker-credentials
+          requires:
+            - changelog_updater
       - test:
           context:
             - docker-credentials
-          filters:
-            branches:
-              ignore: master
+          <<: *pr_filter
+          requires:
+            - validate_yamls

@@ -1,0 +1,5 @@
+server:
+  port: 8091
+test:
+  server:
+    url: http://localhost:8080
