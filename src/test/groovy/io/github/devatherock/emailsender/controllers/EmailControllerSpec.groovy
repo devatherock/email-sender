@@ -7,19 +7,13 @@ import groovy.json.JsonOutput
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.autoconfigure.web.ServerProperties
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.ContextConfiguration
 import org.subethamail.wiser.Wiser
 import org.subethamail.wiser.WiserMessage
-
-import io.github.devatherock.emailsender.EmailSenderApplication
 
 import spock.lang.Shared
 import spock.lang.Specification

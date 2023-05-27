@@ -4,6 +4,7 @@
 *.jar
 code-formatter.xml
 checkstyle.xml
+codenarc.xml
 
 ### STS ###
 .apt_generated
