@@ -12,6 +12,7 @@
 - Upgraded spring boot to `3.0.6`
 - Upgraded snakeyaml to `2.0`
 - Upgraded groovy to `4.0.11`
+- Updated dockerhub readme in CI pipeline
 
 ## [0.2.0] - 2022-11-04
 ### Added

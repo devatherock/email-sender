@@ -58,6 +58,7 @@ jobs:
         auth:
           username: $DOCKER_USERNAME
           password: $DOCKER_PASSWORD
+    <<: *resource_class
     <<: *work_directory
     steps:
       - checkout
@@ -119,6 +120,20 @@ jobs:
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker push devatherock/email-sender:$TAG
             docker push devatherock/email-sender:latest
+            
+  dockerhub_readme:
+    machine:
+      image: ubuntu-2204:2023.04.2
+    steps:
+      - checkout
+      - run: |
+          docker run -v $PWD:/workspace \
+              -e DOCKERHUB_USERNAME \
+              -e DOCKERHUB_PASSWORD \
+              -e DOCKERHUB_REPOSITORY='devatherock/email-sender' \
+              -e SHORT_DESCRIPTION='REST API to send emails' \
+              -e README_FILEPATH='/workspace/README.md' \
+              peterevans/dockerhub-description:3.4.1
             
   integration_test:
     machine:
@@ -185,11 +200,17 @@ workflows:
             - docker-credentials
           requires:
             - build
+      - dockerhub_readme:
+          context:
+            - docker-credentials
+            - dockerhub-readme-credentials
+          requires:
+            - publish
       - integration_test:
           context:
             - docker-credentials
           requires:
-            - publish
+            - dockerhub_readme
       - notify:
           context:
             - docker-credentials
