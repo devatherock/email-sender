@@ -115,11 +115,15 @@ jobs:
           name: Build and push the docker image
           command: |
             TAG=${CIRCLE_SHA1:0:8}
-            docker build -t devatherock/email-sender:$TAG docker
-            docker tag devatherock/email-sender:$TAG devatherock/email-sender:latest
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker push devatherock/email-sender:$TAG
-            docker push devatherock/email-sender:latest
+            docker buildx create --name rockbuilder \
+              --driver docker-container --use --bootstrap
+            docker buildx build \
+              --platform linux/amd64,linux/arm64 \
+              --push \
+              -t devatherock/email-sender:$TAG \
+              -t devatherock/email-sender:latest \
+              docker
             
   dockerhub_readme:
     machine:
@@ -158,9 +162,10 @@ jobs:
           TAG=${CIRCLE_TAG#v}
           DEV_TAG=${CIRCLE_SHA1:0:8}
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker pull devatherock/email-sender:$DEV_TAG
-          docker tag devatherock/email-sender:$DEV_TAG devatherock/email-sender:$TAG
-          docker push devatherock/email-sender:$TAG
+          docker buildx create --name rockbuilder \
+            --driver docker-container --use --bootstrap
+          docker buildx imagetools create \
+            -t devatherock/email-sender:$TAG devatherock/email-sender:$DEV_TAG
 
   deploy:
     executor: jdk-executor

@@ -13,6 +13,7 @@
 - Upgraded snakeyaml to `2.0`
 - Upgraded groovy to `4.0.11`
 - Updated dockerhub readme in CI pipeline
+- Built a multi-arch docker image
 
 ## [0.2.0] - 2022-11-04
 ### Added
