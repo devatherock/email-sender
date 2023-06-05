@@ -20,6 +20,16 @@ executors:
           password: $DOCKER_PASSWORD
     <<: *resource_class
     <<: *work_directory
+  machine-executor:
+    machine:
+      image: ubuntu-2204:2023.04.2
+    resource_class: medium
+    <<: *work_directory
+  arm-executor:
+    machine:
+      image: ubuntu-2004:2022.04.1
+    resource_class: arm.medium
+    <<: *work_directory
     
 release_filter: &release_filter
   filters:
@@ -126,9 +136,7 @@ jobs:
               docker
             
   dockerhub_readme:
-    machine:
-      image: ubuntu-2204:2023.04.2
-      resource_class: medium
+    executor: machine-executor
     steps:
       - checkout
       - run: |
@@ -141,17 +149,26 @@ jobs:
               peterevans/dockerhub-description:3.4.1
             
   integration_test:
-    machine:
-      image: ubuntu-2204:2023.04.2
-      resource_class: medium
+    parameters:
+      runner:
+        type: executor
+    executor: << parameters.runner >>
     steps:
       - checkout
       - attach_workspace:
           at: ~/email-sender
+      - restore_cache:
+          keys:
+            - v1-integration-{{ checksum "build.gradle" }}
+            - v1-integration
       - run: |
           make integration-test
       - store_test_results:
           path: build/test-results
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-integration-{{ checksum "build.gradle" }}    
 
   publish_release:
     executor: jdk-executor
@@ -214,8 +231,17 @@ workflows:
           requires:
             - publish
       - integration_test:
+          name: integration_test_amd
           context:
             - docker-credentials
+          runner: machine-executor
+          requires:
+            - publish
+      - integration_test:
+          name: integration_test_arm
+          context:
+            - docker-credentials
+          runner: arm-executor
           requires:
             - dockerhub_readme
       - notify:
@@ -223,7 +249,8 @@ workflows:
             - docker-credentials
             - slack-webhook
           requires:
-            - integration_test
+            - integration_test_amd
+            - integration_test_arm
             
   release:
     jobs:
