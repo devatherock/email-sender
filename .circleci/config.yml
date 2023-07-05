@@ -1,23 +1,24 @@
+docker_auth: &docker_auth
+  auth:
+    username: $DOCKER_USERNAME
+    password: $DOCKER_PASSWORD
+
 slack_image: &slack_image
   docker:
-    - image: devatherock/simple-slack:0.7.0
-      auth:
-        username: $DOCKER_USERNAME
-        password: $DOCKER_PASSWORD
+    - image: devatherock/simple-slack:1.0.0
+      <<: *docker_auth
 
 work_directory: &work_directory
   working_directory: ~/email-sender
 
 resource_class: &resource_class
   resource_class: small
-  
+
 executors:
   jdk-executor:
     docker:
       - image: cimg/openjdk:17.0
-        auth:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
+        <<: *docker_auth
     <<: *resource_class
     <<: *work_directory
   machine-executor:
@@ -30,14 +31,14 @@ executors:
       image: ubuntu-2004:current
     resource_class: arm.medium
     <<: *work_directory
-    
+
 release_filter: &release_filter
   filters:
     branches:
       only: non-existent-branch
     tags:
       only: /^v[0-9\.]+$/
-     
+
 pr_filter: &pr_filter
   filters:
     branches:
@@ -48,9 +49,7 @@ jobs:
   changelog_updater:
     docker:
     - image: devatherock/changelog-updater:latest
-      auth:
-        username: $DOCKER_USERNAME
-        password: $DOCKER_PASSWORD
+      <<: *docker_auth
     <<: *resource_class
     environment:
       VELA_BUILD_AUTHOR: "renovate[bot]"
@@ -61,13 +60,11 @@ jobs:
             - "4a:86:fe:0e:c3:0e:ad:0d:1d:5c:3e:48:cf:28:39:5d"
       - checkout
       - run: sh /scripts/entry-point.sh
-      
+
   validate_yamls:
     docker:
       - image: devatherock/drone-yaml-validator:2.1.0
-        auth:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
+        <<: *docker_auth
     <<: *resource_class
     <<: *work_directory
     steps:
@@ -86,6 +83,8 @@ jobs:
             - v1-dependencies
       - run: |
           ./gradlew check
+      - store_artifacts:
+          path: build/reports
       - store_test_results:
           path: build/test-results
 
@@ -111,6 +110,8 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
+      - store_artifacts:
+          path: build/reports
       - store_test_results:
           path: build/test-results
 
@@ -134,20 +135,24 @@ jobs:
               -t devatherock/email-sender:$TAG \
               -t devatherock/email-sender:latest \
               docker
-            
+
   dockerhub_readme:
-    executor: machine-executor
+    docker:
+      - image: peterevans/dockerhub-description:3.4.2
+        <<: *docker_auth
+    <<: *resource_class
+    <<: *work_directory
+    environment:
+      DOCKERHUB_REPOSITORY: 'devatherock/email-sender'
+      SHORT_DESCRIPTION: 'REST API to send emails'
+      README_FILEPATH: README.md
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/email-sender
       - run: |
-          docker run -v $PWD:/workspace \
-              -e DOCKERHUB_USERNAME \
-              -e DOCKERHUB_PASSWORD \
-              -e DOCKERHUB_REPOSITORY='devatherock/email-sender' \
-              -e SHORT_DESCRIPTION='REST API to send emails' \
-              -e README_FILEPATH='/workspace/README.md' \
-              peterevans/dockerhub-description:3.4.1
-            
+          sh /entrypoint.sh
+
   integration_test:
     parameters:
       runner:
@@ -168,7 +173,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-integration-{{ checksum "build.gradle" }}    
+          key: v1-integration-{{ checksum "build.gradle" }}
 
   publish_release:
     executor: jdk-executor
@@ -251,7 +256,7 @@ workflows:
           requires:
             - integration_test_amd
             - integration_test_arm
-            
+
   release:
     jobs:
       - publish_release:
@@ -271,7 +276,7 @@ workflows:
           <<: *release_filter
           requires:
             - deploy
-            
+
   pr_check:
     jobs:
       - changelog_updater:

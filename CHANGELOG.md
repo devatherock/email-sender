@@ -4,6 +4,7 @@
 ### Added
 - Used cache for integration tests
 - Integration tested the arm image
+- Persisted build reports
 
 ## [1.0.0] - 2023-05-31
 ### Added

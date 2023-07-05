@@ -20,5 +20,4 @@ services:
       - key: EMAILSENDER_SMTP_USERNAME
         value: apikey
       - key: JAVA_TOOL_OPTIONS
-        value: -Xss256k -Xmx128m        
-        
+        value: -Xss256k -Xmx128m
