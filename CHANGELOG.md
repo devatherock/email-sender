@@ -5,6 +5,7 @@
 - Used cache for integration tests
 - Integration tested the arm image
 - Persisted build reports
+- Upgraded `spring-boot` to `3.0.8`
 
 ## [1.0.0] - 2023-05-31
 ### Added
