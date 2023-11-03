@@ -63,9 +63,6 @@ ext.jacoco = [
     exclusions: [
         'io/github/devatherock/emailsender/EmailSenderApplication.class',
         // TODO Remove once tests are written
-        'io/github/devatherock/emailsender/config/EmailSenderAppConfig.class',
-        'io/github/devatherock/emailsender/config/EmailSenderProperties.class',
-        'io/github/devatherock/emailsender/model/EmailSendRequest.class',
         'io/github/devatherock/emailsender/service/EmailClient.class',
     ],
 ]

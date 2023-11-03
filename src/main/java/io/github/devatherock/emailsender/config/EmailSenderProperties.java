@@ -62,12 +62,12 @@ public class EmailSenderProperties {
     /**
      * Validates if all required attributes are specified
      *
-     * @return
+     * @return a flag
      */
     @AssertTrue(message = "SMTP server details missing")
     public boolean isValidSmtpConfig() {
-        return smtp.embedded || (StringUtils.hasLength(smtp.username) && StringUtils.hasLength(smtp.password)
-                && StringUtils.hasLength(smtp.host));
+        return smtp.embedded || (StringUtils.hasText(smtp.username) && StringUtils.hasText(smtp.password)
+                && StringUtils.hasText(smtp.host));
     }
 
     /**
