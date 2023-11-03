@@ -5,7 +5,11 @@
 - Used cache for integration tests
 - Integration tested the arm image
 - Persisted build reports
-- Upgraded `spring-boot` to `3.0.8`
+- Tests for YAML input
+
+### Changed
+- Upgraded `spring-boot` to `3.0.12`
+- Upgraded `gradle` to `7.6.3`
 
 ## [1.0.0] - 2023-05-31
 ### Added
