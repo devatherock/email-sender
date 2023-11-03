@@ -14,6 +14,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.subethamail.wiser.Wiser
 import org.subethamail.wiser.WiserMessage
+import org.yaml.snakeyaml.Yaml
 
 import spock.lang.Shared
 import spock.lang.Specification
@@ -45,9 +46,48 @@ abstract class EmailControllerSpec extends Specification {
         wiser.messages.clear()
     }
 
-    void 'test send email'() {
+    void 'test send email - #contentType'() {
         given:
-        def request = [
+        HttpHeaders headers = new HttpHeaders()
+        headers.setContentType(contentType)
+        headers.setAccept([MediaType.APPLICATION_JSON])
+
+        when:
+        ResponseEntity response = restTemplate.postForEntity(
+                "${serverUrl}/email/v1", new HttpEntity(requestBody, headers), String
+        )
+
+        then:
+        response.statusCode.value() == 201
+
+        and:
+        wiser.messages
+        WiserMessage message = wiser.messages[0]
+        message.mimeMessage.subject == 'Test email subject'
+
+        and:
+        String emailContent = message.mimeMessage.content.ds.inputStream.text
+        emailContent.contains('Test plain email content')
+        emailContent.contains('<html><body>Test html email content</body></html>')
+
+        and:
+        verifyAddress(message.mimeMessage.from[0], 'Test.From', 'from@test.com')
+        verifyAddress(message.mimeMessage.getRecipients(RecipientType.TO)[0], 'Test.To', 'to@test.com')
+        verifyAddress(message.mimeMessage.getRecipients(RecipientType.CC)[0], 'Test.Cc', 'cc@test.com')
+        
+        where:
+        contentType |  requestBody
+        MediaType.APPLICATION_JSON | JsonOutput.toJson(buildRequest())
+        new MediaType("application", "x-yaml") | new Yaml().dump(buildRequest()) 
+    }
+
+    protected void verifyAddress(Address address, String name, String email) {
+        assert address.personal == name
+        assert address.address == email
+    }
+    
+    def buildRequest() {
+        return [
                 'from'   : [
                         'name' : 'Test.From',
                         'email': 'from@test.com'
@@ -74,38 +114,5 @@ abstract class EmailControllerSpec extends Specification {
                 'text'   : 'Test plain email content',
                 'html'   : '<html><body>Test html email content</body></html>'
         ]
-
-        and:
-        HttpHeaders headers = new HttpHeaders()
-        headers.setContentType(MediaType.APPLICATION_JSON)
-        headers.setAccept([MediaType.APPLICATION_JSON])
-
-        when:
-        ResponseEntity response = restTemplate.postForEntity(
-                "${serverUrl}/email/v1", new HttpEntity(JsonOutput.toJson(request), headers), String
-        )
-
-        then:
-        response.statusCode.value() == 201
-
-        and:
-        wiser.messages
-        WiserMessage message = wiser.messages[0]
-        message.mimeMessage.subject == 'Test email subject'
-
-        and:
-        String emailContent = message.mimeMessage.content.ds.inputStream.text
-        emailContent.contains('Test plain email content')
-        emailContent.contains('<html><body>Test html email content</body></html>')
-
-        and:
-        verifyAddress(message.mimeMessage.from[0], 'Test.From', 'from@test.com')
-        verifyAddress(message.mimeMessage.getRecipients(RecipientType.TO)[0], 'Test.To', 'to@test.com')
-        verifyAddress(message.mimeMessage.getRecipients(RecipientType.CC)[0], 'Test.Cc', 'cc@test.com')
-    }
-
-    protected void verifyAddress(Address address, String name, String email) {
-        assert address.personal == name
-        assert address.address == email
     }
 }

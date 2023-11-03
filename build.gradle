@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'groovy'
     id 'jacoco'
-    id 'org.springframework.boot' version '3.0.8'
-    id 'io.spring.dependency-management' version '1.1.0'
-    id 'com.diffplug.spotless' version '6.19.0'
-    id 'org.owasp.dependencycheck' version '8.3.1'
+    id 'org.springframework.boot' version '3.0.12'
+    id 'io.spring.dependency-management' version '1.1.3'
+    id 'com.diffplug.spotless' version '6.22.0'
+    id 'org.owasp.dependencycheck' version '8.4.2'
 }
 
 group = 'io.github.devatherock'
@@ -33,7 +33,7 @@ dependencies {
     implementation group: 'org.simplejavamail', name: 'simple-java-mail', version: '5.5.1'
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
 
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.13'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
 
     testImplementation group: 'org.apache.groovy', name: 'groovy-json', version: '4.0.11'
     testImplementation group: 'org.spockframework', name: 'spock-core', version: spockVersion
@@ -66,7 +66,6 @@ ext.jacoco = [
         'io/github/devatherock/emailsender/config/EmailSenderAppConfig.class',
         'io/github/devatherock/emailsender/config/EmailSenderProperties.class',
         'io/github/devatherock/emailsender/model/EmailSendRequest.class',
-        'io/github/devatherock/emailsender/util/YamlHttpMessageConverter.class',
         'io/github/devatherock/emailsender/service/EmailClient.class',
     ],
 ]
