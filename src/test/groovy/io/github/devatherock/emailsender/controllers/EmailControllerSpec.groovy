@@ -16,6 +16,7 @@ import org.subethamail.wiser.Wiser
 import org.subethamail.wiser.WiserMessage
 import org.yaml.snakeyaml.Yaml
 
+import com.jayway.jsonpath.JsonPath
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -79,6 +80,28 @@ abstract class EmailControllerSpec extends Specification {
         contentType |  requestBody
         MediaType.APPLICATION_JSON | JsonOutput.toJson(buildRequest())
         new MediaType("application", "x-yaml") | new Yaml().dump(buildRequest()) 
+    }
+
+    void 'test send email - no recipients specified'() {
+        given:
+        HttpHeaders headers = new HttpHeaders()
+        headers.setContentType(MediaType.APPLICATION_JSON)
+        headers.setAccept([MediaType.APPLICATION_JSON])
+
+        when:
+        ResponseEntity response = restTemplate.postForEntity(
+                "${serverUrl}/email/v1", new HttpEntity('{}', headers), String
+        )
+
+        then:
+        response.statusCode.value() == 400
+        JsonPath.read(response.body, '$.errors')
+        JsonPath.read(response.body, '$.errors.length()') == 1
+        JsonPath.read(response.body, '$.errors[0].field') == 'recipientSpecified'
+        JsonPath.read(response.body, '$.errors[0].message') == 'One of to, cc or bcc must be specified'
+
+        and:
+        !wiser.messages
     }
 
     protected void verifyAddress(Address address, String name, String email) {

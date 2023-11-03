@@ -6,6 +6,7 @@
 - Integration tested the arm image
 - Persisted build reports
 - Tests for YAML input
+- [#25](https://github.com/devatherock/email-sender/issues/25): Custom error response for validation errors
 
 ### Changed
 - Upgraded `spring-boot` to `3.0.12`
