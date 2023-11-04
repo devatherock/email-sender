@@ -12,6 +12,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Configurable properties for the application
@@ -75,6 +76,7 @@ public class EmailSenderProperties {
      */
     @Getter
     @Setter
+    @ToString
     public static class Contact {
         /**
          * The name of the recipient. Optional

@@ -7,6 +7,7 @@
 - Persisted build reports
 - Tests for YAML input
 - [#25](https://github.com/devatherock/email-sender/issues/25): Custom error response for validation errors
+- [#14](https://github.com/devatherock/email-sender/issues/14): Tests for sends to bcc addresses
 
 ### Changed
 - Upgraded `spring-boot` to `3.0.12`
