@@ -2,6 +2,7 @@ package io.github.devatherock.emailsender.config;
 
 import java.util.List;
 
+import org.masukomi.aspirin.Aspirin;
 import org.simplejavamail.mailer.Mailer;
 import org.simplejavamail.mailer.MailerBuilder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -18,12 +19,23 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Configuration for the application
  */
 @Configuration
+@RequiredArgsConstructor
 public class EmailSenderAppConfig {
+    private final EmailSenderProperties config;
+
+    @PostConstruct
+    public void init() {
+        if (config.getSmtp().getEmbedded().isEnabled()) {
+            Aspirin.getConfiguration().setHostname(config.getSmtp().getEmbedded().getHost());
+        }
+    }
 
     /**
      * {@link WebMvcConfigurer} to accept Yaml input
@@ -74,7 +86,7 @@ public class EmailSenderAppConfig {
      * @return a mailer
      */
     @Bean
-    @ConditionalOnProperty(name = "emailsender.smtp.embedded", havingValue = "false")
+    @ConditionalOnProperty(name = "emailsender.smtp.embedded.enabled", havingValue = "false")
     public Mailer mailer(EmailSenderProperties config) {
         return MailerBuilder
                 .withSMTPServer(config.getSmtp().getHost(), config.getSmtp().getPort(),

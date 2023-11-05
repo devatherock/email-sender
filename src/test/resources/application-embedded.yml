@@ -1,0 +1,12 @@
+emailsender:
+  smtp:
+    fromAddress:
+      email: from@test.com
+    embedded:
+      enabled: true
+      host: devatherock.github.io
+server:
+  port: 8092
+test:
+  server:
+    url: http://localhost:8092

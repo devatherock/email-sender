@@ -44,7 +44,7 @@ public class EmailClient {
         Email email = transformRequest(emailSendRequest);
 
         try {
-            if (config.getSmtp().isEmbedded()) {
+            if (config.getSmtp().getEmbedded().isEnabled()) {
                 LOGGER.debug("Sending email using embedded SMTP server");
 
                 MimeMessage message = EmailConverter.emailToMimeMessage(email);
@@ -91,7 +91,7 @@ public class EmailClient {
         // If using the embedded SMTP server, let emails be sent with from address in
         // request
         if (null != emailSendRequest.getFrom() && (null == config.getSmtp().getFromAddress() ||
-                config.getSmtp().isEmbedded())) {
+                config.getSmtp().getEmbedded().isEnabled())) {
             emailBuilder.from(emailSendRequest.getFrom().getName(), emailSendRequest.getFrom().getEmail());
         }
 

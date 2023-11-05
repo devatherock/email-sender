@@ -14,4 +14,5 @@ management:
         - info
 emailsender:
   smtp:
-    embedded: false
+    embedded:
+      enabled: false

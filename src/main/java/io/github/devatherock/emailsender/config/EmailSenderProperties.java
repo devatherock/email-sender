@@ -33,9 +33,10 @@ public class EmailSenderProperties {
     @Setter
     public static class SmtpProperties {
         /**
-         * Indicates if an embedded SMTP server should be used. Turned off by default
+         * Embedded SMTP config
          */
-        private boolean embedded = false;
+        @Valid
+        private EmbeddedSmtpProperties embedded = new EmbeddedSmtpProperties();
         /**
          * The SMTP username
          */
@@ -61,14 +62,31 @@ public class EmailSenderProperties {
     }
 
     /**
+     * Embedded SMTP configuration
+     */
+    @Getter
+    @Setter
+    public static class EmbeddedSmtpProperties {
+        /**
+         * Indicates if an embedded SMTP server should be used. Turned off by default
+         */
+        private boolean enabled = false;
+        /**
+         * The host name to use for the embedded SMTP server
+         */
+        private String host;
+    }
+
+    /**
      * Validates if all required attributes are specified
      *
      * @return a flag
      */
     @AssertTrue(message = "SMTP server details missing")
     public boolean isValidSmtpConfig() {
-        return smtp.embedded || (StringUtils.hasText(smtp.username) && StringUtils.hasText(smtp.password)
-                && StringUtils.hasText(smtp.host));
+        return (smtp.embedded.enabled && StringUtils.hasText(smtp.embedded.host)) ||
+                (StringUtils.hasText(smtp.username) && StringUtils.hasText(smtp.password)
+                        && StringUtils.hasText(smtp.host));
     }
 
     /**
