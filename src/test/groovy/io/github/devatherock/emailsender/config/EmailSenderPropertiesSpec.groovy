@@ -12,7 +12,8 @@ class EmailSenderPropertiesSpec extends Specification {
 
     void 'test is valid smtp config'() {
         given:
-        config.smtp.embedded = isEmbedded
+        config.smtp.embedded.enabled = isEmbedded
+        config.smtp.embedded.host = embeddedHost
         config.smtp.username = username
         config.smtp.password = password
         config.smtp.host = host
@@ -21,20 +22,23 @@ class EmailSenderPropertiesSpec extends Specification {
         config.isValidSmtpConfig() == expected
 
         where:
-        isEmbedded | username   | password   | host         | expected
-        true       | null       | null       | null         | true
-        true       | ''         | ''         | ''           | true
-        true       | ' '        | ' '        | ' '          | true
-        false      | 'testuser' | 'password' | null         | false
-        false      | 'testuser' | 'password' | ''           | false
-        false      | 'testuser' | 'password' | ' '          | false
-        false      | null       | 'password' | 'dummy.host' | false
-        false      | ''         | 'password' | 'dummy.host' | false
-        false      | ' '        | 'password' | 'dummy.host' | false
-        false      | 'testuser' | null       | null         | false
-        false      | 'testuser' | ''         | 'dummy.host' | false
-        false      | 'testuser' | ' '        | 'dummy.host' | false
-        false      | null       | null       | null         | false
-        false      | 'testuser' | 'password' | 'dummy.host' | true
+        isEmbedded | username   | password   | host         | expected | embeddedHost
+        true       | null       | null       | null         | true     | 'embedded.host'
+        true       | ''         | ''         | ''           | true     | 'embedded.host'
+        true       | ' '        | ' '        | ' '          | true     | 'embedded.host'
+        true       | null       | null       | null         | false    | null
+        true       | ''         | ''         | ''           | false    | ''
+        true       | ' '        | ' '        | ' '          | false    | ' '
+        false      | 'testuser' | 'password' | null         | false    | null
+        false      | 'testuser' | 'password' | ''           | false    | null
+        false      | 'testuser' | 'password' | ' '          | false    | null
+        false      | null       | 'password' | 'dummy.host' | false    | null
+        false      | ''         | 'password' | 'dummy.host' | false    | null
+        false      | ' '        | 'password' | 'dummy.host' | false    | null
+        false      | 'testuser' | null       | null         | false    | null
+        false      | 'testuser' | ''         | 'dummy.host' | false    | null
+        false      | 'testuser' | ' '        | 'dummy.host' | false    | null
+        false      | null       | null       | null         | false    | null
+        false      | 'testuser' | 'password' | 'dummy.host' | true     | null
     }
 }

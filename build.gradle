@@ -62,9 +62,16 @@ tasks.withType(Test) {
 ext.jacoco = [
     exclusions: [
         'io/github/devatherock/emailsender/EmailSenderApplication.class',
-        // TODO Remove once tests are written
-        'io/github/devatherock/emailsender/service/EmailClient.class',
     ],
+    coverageThresholds: [
+        // TODO: Remove/Adjust thresholds once all tests are written
+        'io.github.devatherock.emailsender.service.EmailClient': [
+            'BRANCH': 0.85,
+            'COMPLEXITY': 0.81,
+            'INSTRUCTION': 0.95,
+            'LINE': 0.95
+        ]
+    ]
 ]
 
 apply from: "${getPropertyValue('gradle.includes.location', 'https://raw.githubusercontent.com/devatherock/gradle-includes/master')}/integration.gradle"
