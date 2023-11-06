@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+
+  email-sender:
+    image: devatherock/email-sender:latest
+    network_mode: "host"
+    environment:
+      EMAILSENDER_SMTP_EMBEDDED_ENABLED: 'true'
+      EMAILSENDER_SMTP_EMBEDDED_HOST: devatherock.github.io

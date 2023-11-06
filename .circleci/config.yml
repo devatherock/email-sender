@@ -167,7 +167,7 @@ jobs:
             - v1-integration-{{ checksum "build.gradle" }}
             - v1-integration
       - run: |
-          make integration-test
+          make integration-test embedded-integration-test
       - store_test_results:
           path: build/test-results
       - save_cache:
