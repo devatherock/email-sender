@@ -12,8 +12,12 @@ fast-build:
 	./gradlew build -x dependencyCheckAggregate	
 integration-test:
 	docker-compose up &
-	./gradlew integrationTest
+	./gradlew integrationTest --tests '*ControllerIntegrationSpec*'
 	docker-compose down
+embedded-integration-test:
+	docker-compose -f docker-compose-embedded.yml up &
+	./gradlew integrationTest --tests '*EmbeddedIntegrationSpec*'
+	docker-compose -f docker-compose-embedded.yml down	
 docker-build:
 	./gradlew clean build
 	cp build/libs/email-sender-*.jar docker/

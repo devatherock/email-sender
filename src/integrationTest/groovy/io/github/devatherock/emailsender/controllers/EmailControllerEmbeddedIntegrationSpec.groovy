@@ -4,15 +4,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 
-import io.github.devatherock.emailsender.EmailSenderApplication
+import io.github.devatherock.emailsender.test.IntegrationTestApp
 
 /**
- * Unit test for {@link EmailController} class, that uses embedded SMTP server
+ * Integration test for {@link EmailController} class, that uses embedded SMTP server
  */
-@ActiveProfiles('embedded')
-@SpringBootTest(classes = [EmailSenderApplication],
+@ActiveProfiles('integration')
+@SpringBootTest(classes = [IntegrationTestApp],
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration
-class EmailControllerEmbeddedTestSpec extends EmailControllerEmbeddedSpec {
+class EmailControllerEmbeddedIntegrationSpec extends EmailControllerEmbeddedSpec {
 
 }
