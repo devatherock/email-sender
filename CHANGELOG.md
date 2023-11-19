@@ -18,6 +18,7 @@
 - Upgraded dependency management plugin to `1.1.4`
 - Upgraded jre to `17.0.9`
 - chore: Configure Renovate
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.15
 
 ## [1.0.0] - 2023-05-31
 ### Added
