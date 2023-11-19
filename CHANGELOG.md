@@ -17,6 +17,7 @@
 - Upgraded `snakeyaml` to `2.2`
 - Upgraded dependency management plugin to `1.1.4`
 - Upgraded jre to `17.0.9`
+- chore: Configure Renovate
 
 ## [1.0.0] - 2023-05-31
 ### Added
