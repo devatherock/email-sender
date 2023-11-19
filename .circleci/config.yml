@@ -14,6 +14,26 @@ work_directory: &work_directory
 resource_class: &resource_class
   resource_class: small
 
+release_filter: &release_filter
+  filters:
+    branches:
+      only: non-existent-branch
+    tags:
+      only: /^v[0-9\.]+$/
+
+pr_filter: &pr_filter
+  filters:
+    branches:
+      ignore: master
+
+orbs:
+  templates: devatherock/circleci-templates@0.4.0
+
+parameters:
+  repo_name:
+    type: string
+    default: "email-sender"
+
 executors:
   jdk-executor:
     docker:
@@ -32,45 +52,8 @@ executors:
     resource_class: arm.medium
     <<: *work_directory
 
-release_filter: &release_filter
-  filters:
-    branches:
-      only: non-existent-branch
-    tags:
-      only: /^v[0-9\.]+$/
-
-pr_filter: &pr_filter
-  filters:
-    branches:
-      ignore: master
-
 version: 2.1
 jobs:
-  changelog_updater:
-    docker:
-    - image: devatherock/changelog-updater:latest
-      <<: *docker_auth
-    <<: *resource_class
-    environment:
-      VELA_BUILD_AUTHOR: "renovate[bot]"
-      VELA_BUILD_AUTHOR_EMAIL: "29139614+renovate[bot]@users.noreply.github.com"
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "4a:86:fe:0e:c3:0e:ad:0d:1d:5c:3e:48:cf:28:39:5d"
-      - checkout
-      - run: sh /scripts/entry-point.sh
-
-  validate_yamls:
-    docker:
-      - image: devatherock/drone-yaml-validator:2.1.0
-        <<: *docker_auth
-    <<: *resource_class
-    <<: *work_directory
-    steps:
-      - checkout
-      - run: sh /scripts/entry-point.sh
-
   test:
     executor: jdk-executor
     steps:
@@ -136,23 +119,6 @@ jobs:
               -t devatherock/email-sender:latest \
               docker
 
-  dockerhub_readme:
-    docker:
-      - image: peterevans/dockerhub-description:3.4.2
-        <<: *docker_auth
-    <<: *resource_class
-    <<: *work_directory
-    environment:
-      DOCKERHUB_REPOSITORY: 'devatherock/email-sender'
-      SHORT_DESCRIPTION: 'REST API to send emails'
-      README_FILEPATH: README.md
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/email-sender
-      - run: |
-          sh /entrypoint.sh
-
   integration_test:
     parameters:
       runner:
@@ -213,9 +179,11 @@ workflows:
   version: 2.1
   build_publish:
     jobs:
-      - validate_yamls:
+      - templates/yaml_validator:
+          name: validate_yamls
           context:
             - docker-credentials
+          work_dir: '~/<< pipeline.parameters.repo_name >>'
           filters:
             branches:
               only: master
@@ -229,10 +197,14 @@ workflows:
             - docker-credentials
           requires:
             - build
-      - dockerhub_readme:
+      - templates/dockerhub_readme_update:
+          name: dockerhub_readme
           context:
             - docker-credentials
             - dockerhub-readme-credentials
+          docker_image: '<< pipeline.parameters.repo_name >>'
+          image_description: 'REST API to send emails'
+          work_dir: '~/<< pipeline.parameters.repo_name >>'
           requires:
             - publish
       - integration_test:
@@ -279,14 +251,17 @@ workflows:
 
   pr_check:
     jobs:
-      - changelog_updater:
+      - templates/changelog_updater:
+          name: changelog_updater
           context:
             - docker-credentials
             - changelog-updater-credentials
           <<: *pr_filter
-      - validate_yamls:
+      - templates/yaml_validator:
+          name: validate_yamls
           context:
             - docker-credentials
+          work_dir: '~/<< pipeline.parameters.repo_name >>'
           requires:
             - changelog_updater
       - test:

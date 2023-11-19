@@ -13,6 +13,10 @@
 ### Changed
 - Upgraded `spring-boot` to `3.0.12`
 - Upgraded `gradle` to `7.6.3`
+- Upgraded dependency check plugin to `8.4.3`
+- Upgraded `snakeyaml` to `2.2`
+- Upgraded dependency management plugin to `1.1.4`
+- Upgraded jre to `17.0.9`
 
 ## [1.0.0] - 2023-05-31
 ### Added
