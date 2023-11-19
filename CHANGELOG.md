@@ -19,6 +19,7 @@
 - Upgraded jre to `17.0.9`
 - chore: Configure Renovate
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.15
+- fix(deps): update dependency org.projectlombok:lombok to v1.18.30
 
 ## [1.0.0] - 2023-05-31
 ### Added
