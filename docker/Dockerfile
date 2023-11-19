@@ -1,7 +1,7 @@
-FROM eclipse-temurin:17.0.7_7-jre-jammy
+FROM eclipse-temurin:17.0.9_9-jre-jammy
 
 LABEL maintainer="devatherock@gmail.com"
-LABEL io.github.devatherock.version="0.3.0"
+LABEL io.github.devatherock.version="1.1.0"
 
 COPY email-sender-*-boot.jar /emailsender.jar
 
