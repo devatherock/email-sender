@@ -21,6 +21,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.15
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.30
 - chore(deps): update plugin org.springframework.boot to v3.2.0
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.0.0
 
 ## [1.0.0] - 2023-05-31
 ### Added
