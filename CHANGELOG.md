@@ -24,6 +24,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.0.0
 - chore(deps): update dependency gradle to v8
 - Updated dependency check plugin to `9.0.1`
+- chore(deps): update devatherock/email-sender docker tag to v1
 
 ## [1.0.0] - 2023-05-31
 ### Added
