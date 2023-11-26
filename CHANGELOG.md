@@ -22,6 +22,8 @@
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.30
 - chore(deps): update plugin org.springframework.boot to v3.2.0
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.0.0
+- chore(deps): update dependency gradle to v8
+- Updated dependency check plugin to `9.0.1`
 
 ## [1.0.0] - 2023-05-31
 ### Added
