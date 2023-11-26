@@ -64,8 +64,14 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies
-      - run: |
-          ./gradlew check
+      - run:
+          name: run tests
+          no_output_timeout: 60m
+          command: ./gradlew check
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}          
       - store_artifacts:
           path: build/reports
       - store_test_results:
@@ -81,9 +87,12 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies
-      - run: |
-          ./gradlew build
-          cp build/libs/email-sender-*.jar docker/
+      - run:
+          name: run build
+          no_output_timeout: 60m
+          command: |
+            ./gradlew build
+            cp build/libs/email-sender-*.jar docker/
       - persist_to_workspace:
           root: ~/email-sender
           paths:
@@ -190,6 +199,7 @@ workflows:
       - build:
           context:
             - docker-credentials
+            - dependencycheck-credentials
           requires:
             - validate_yamls
       - publish:
@@ -267,6 +277,7 @@ workflows:
       - test:
           context:
             - docker-credentials
+            - dependencycheck-credentials
           <<: *pr_filter
           requires:
             - validate_yamls
