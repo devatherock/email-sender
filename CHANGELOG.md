@@ -25,6 +25,7 @@
 - chore(deps): update dependency gradle to v8
 - Updated dependency check plugin to `9.0.1`
 - chore(deps): update devatherock/email-sender docker tag to v1
+- Configure Mend Bolt for GitHub
 
 ## [1.0.0] - 2023-05-31
 ### Added
