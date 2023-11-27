@@ -13,7 +13,6 @@
 ### Changed
 - Upgraded `spring-boot` to `3.0.12`
 - Upgraded `gradle` to `7.6.3`
-- Upgraded dependency check plugin to `8.4.3`
 - Upgraded `snakeyaml` to `2.2`
 - Upgraded dependency management plugin to `1.1.4`
 - Upgraded jre to `17.0.9`
@@ -23,9 +22,11 @@
 - chore(deps): update plugin org.springframework.boot to v3.2.0
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.0.0
 - chore(deps): update dependency gradle to v8
-- Updated dependency check plugin to `9.0.1`
 - chore(deps): update devatherock/email-sender docker tag to v1
 - Configure Mend Bolt for GitHub
+
+### Removed
+- Dependency check plugin
 
 ## [1.0.0] - 2023-05-31
 ### Added
