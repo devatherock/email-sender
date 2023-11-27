@@ -24,6 +24,7 @@
 - chore(deps): update dependency gradle to v8
 - chore(deps): update devatherock/email-sender docker tag to v1
 - Configure Mend Bolt for GitHub
+- chore(deps): update eclipse-temurin docker tag to v21
 
 ### Removed
 - Dependency check plugin
