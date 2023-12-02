@@ -26,6 +26,7 @@
 - Configure Mend Bolt for GitHub
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.16
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.1.0
+- chore(deps): update dependency gradle to v8.5
 
 ### Removed
 - Dependency check plugin
