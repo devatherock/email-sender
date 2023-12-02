@@ -24,6 +24,7 @@
 - chore(deps): update dependency gradle to v8
 - chore(deps): update devatherock/email-sender docker tag to v1
 - Configure Mend Bolt for GitHub
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.16
 
 ### Removed
 - Dependency check plugin
