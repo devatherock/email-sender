@@ -3,7 +3,7 @@ package io.github.devatherock.emailsender.config;
 import java.util.List;
 
 import org.masukomi.aspirin.Aspirin;
-import org.simplejavamail.mailer.Mailer;
+import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.mailer.MailerBuilder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.info.BuildProperties;

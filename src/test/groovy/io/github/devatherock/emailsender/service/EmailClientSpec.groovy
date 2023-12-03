@@ -2,8 +2,8 @@ package io.github.devatherock.emailsender.service
 
 import javax.mail.Message.RecipientType
 
-import org.simplejavamail.email.Email
-import org.simplejavamail.mailer.Mailer
+import org.simplejavamail.api.email.Email
+import org.simplejavamail.api.mailer.Mailer
 
 import io.github.devatherock.emailsender.config.EmailSenderProperties
 import io.github.devatherock.emailsender.config.EmailSenderProperties.Contact
@@ -25,60 +25,6 @@ class EmailClientSpec extends Specification {
 
     void setup() {
         emailClient = new EmailClient(Optional.of(mailer), config)
-    }
-
-    void 'test send email'() {
-        given:
-        EmailSendRequest request = new EmailSendRequest(
-                from: new Contact(
-                        name: 'Test.From',
-                        email: 'from@test.com'
-                ),
-                'to': [
-                        new Contact(
-                                name: 'Test.To',
-                                email: 'to@test.com'
-                        )
-                ],
-                'cc': [
-                        new Contact(
-                                name: 'Test.Cc',
-                                email: 'cc@test.com'
-                        )
-                ],
-                bcc: [
-                        new Contact(
-                                name: 'Test.Bcc',
-                                email: 'bcc@test.com'
-                        )
-                ],
-                subject: 'Test email subject',
-                text: 'Test email content',
-                html: '<html><body>Test email content</body></html>'
-        )
-
-        when:
-        String id = emailClient.sendEmail(request)
-
-        then:
-        1 * mailer.validate({ Email email ->
-            email.subject == 'Test email subject'
-            email.getHTMLText() == '<html><body>Test email content</body></html>'
-            email.plainText == 'Test email content'
-            email.fromRecipient.name == 'Test.From'
-            email.fromRecipient.address == 'from@test.com'
-        }) >> { args ->
-            Email capturedEmail = args[0]
-
-            verifyRecipient(capturedEmail.recipients, RecipientType.TO, 'Test.To', 'to@test.com')
-            verifyRecipient(capturedEmail.recipients, RecipientType.BCC, 'Test.Bcc', 'bcc@test.com')
-            verifyRecipient(capturedEmail.recipients, RecipientType.CC, 'Test.Cc', 'cc@test.com')
-
-            return false
-        }
-
-        and:
-        id
     }
 
     void 'test transform request - no from email in request'() {

@@ -28,6 +28,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.1.0
 - chore(deps): update dependency gradle to v8.5
 - chore(deps): update plugin com.diffplug.spotless to v6.23.2
+- fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
 
 ### Removed
 - Dependency check plugin
