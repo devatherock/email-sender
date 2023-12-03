@@ -29,7 +29,7 @@ dependencies {
     implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
     implementation group: 'org.masukomi', name: 'aspirin', version: '0.11.01'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.44.1.0'
-    implementation group: 'org.simplejavamail', name: 'simple-java-mail', version: '8.3.3'
+    implementation group: 'org.simplejavamail', name: 'simple-java-mail', version: '6.7.6'
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
@@ -64,7 +64,9 @@ ext.jacoco = [
     ],
     coverageThresholds: [
         'io.github.devatherock.emailsender.service.EmailClient': [
-            'INSTRUCTION': 0.96,
+            'BRANCH': 0.95,
+            'COMPLEXITY': 0.93,
+            'INSTRUCTION': 0.95,
             'LINE': 0.95
         ]
     ]

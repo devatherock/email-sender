@@ -8,8 +8,6 @@ ifeq ($(all), true)
 	yamllint -d relaxed . --no-warnings
 endif
 	./gradlew check
-fast-build:
-	./gradlew build -x dependencyCheckAggregate	
 integration-test:
 	docker-compose up &
 	./gradlew integrationTest --tests '*ControllerIntegrationSpec*'
