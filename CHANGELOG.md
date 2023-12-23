@@ -31,6 +31,7 @@
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.3.0
 - chore(deps): update plugin com.diffplug.spotless to v6.23.3
+- chore(deps): update plugin org.springframework.boot to v3.2.1
 
 ### Removed
 - Dependency check plugin
