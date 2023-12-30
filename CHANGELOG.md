@@ -32,6 +32,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.3.0
 - chore(deps): update plugin com.diffplug.spotless to v6.23.3
 - chore(deps): update plugin org.springframework.boot to v3.2.1
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.17
 
 ### Removed
 - Dependency check plugin
