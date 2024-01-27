@@ -37,6 +37,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.18
 - chore(deps): update plugin com.diffplug.spotless to v6.24.0
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.0.0
+- chore(deps): update eclipse-temurin docker tag to v17.0.10_7-jre-jammy
 
 ### Removed
 - Dependency check plugin
