@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17.0.9_9-jre-jammy
+FROM eclipse-temurin:17.0.10_7-jre-jammy
 
 LABEL maintainer="devatherock@gmail.com"
 LABEL io.github.devatherock.version="1.1.0"
