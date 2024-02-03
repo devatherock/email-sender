@@ -40,6 +40,7 @@
 - chore(deps): update eclipse-temurin docker tag to v17.0.10_7-jre-jammy
 - chore(deps): update plugin com.diffplug.spotless to v6.25.0
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.1.0
+- chore(deps): update dependency gradle to v8.6
 
 ### Removed
 - Dependency check plugin
