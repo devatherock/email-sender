@@ -43,6 +43,7 @@
 - chore(deps): update dependency gradle to v8.6
 - chore(deps): update cimg/openjdk docker tag to v17.0.10
 - chore(deps): update templates orb to v0.5.0
+- chore(deps): update plugin org.springframework.boot to v3.2.3
 
 ### Removed
 - Dependency check plugin
