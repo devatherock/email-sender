@@ -47,6 +47,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.19
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.20
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.2.0
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.4.0
 
 ### Removed
 - Dependency check plugin
