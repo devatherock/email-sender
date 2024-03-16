@@ -45,6 +45,7 @@
 - chore(deps): update templates orb to v0.5.0
 - chore(deps): update plugin org.springframework.boot to v3.2.3
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.19
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.20
 
 ### Removed
 - Dependency check plugin
