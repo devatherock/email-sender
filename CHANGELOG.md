@@ -46,6 +46,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.2.3
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.19
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.20
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.2.0
 
 ### Removed
 - Dependency check plugin
