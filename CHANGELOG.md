@@ -49,6 +49,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.2.0
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.4.0
 - chore(deps): update plugin org.springframework.boot to v3.2.4
+- fix(deps): update dependency org.projectlombok:lombok to v1.18.32
 
 ### Removed
 - Dependency check plugin
