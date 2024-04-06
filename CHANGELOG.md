@@ -51,6 +51,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.2.4
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.32
 - chore(deps): update dependency gradle to v8.7
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
 
 ### Removed
 - Dependency check plugin
