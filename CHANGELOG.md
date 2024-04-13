@@ -52,6 +52,7 @@
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.32
 - chore(deps): update dependency gradle to v8.7
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.21
 
 ### Removed
 - Dependency check plugin
