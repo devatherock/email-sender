@@ -11,48 +11,24 @@
 - Unit and integration tests for sends using embedded SMTP server
 
 ### Changed
-- Upgraded `spring-boot` to `3.0.12`
-- Upgraded `gradle` to `7.6.3`
 - Upgraded `snakeyaml` to `2.2`
 - Upgraded dependency management plugin to `1.1.4`
 - Upgraded jre to `17.0.9`
 - chore: Configure Renovate
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.15
-- fix(deps): update dependency org.projectlombok:lombok to v1.18.30
-- chore(deps): update plugin org.springframework.boot to v3.2.0
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.0.0
 - chore(deps): update dependency gradle to v8
 - chore(deps): update devatherock/email-sender docker tag to v1
 - Configure Mend Bolt for GitHub
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.16
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.44.1.0
-- chore(deps): update dependency gradle to v8.5
-- chore(deps): update plugin com.diffplug.spotless to v6.23.2
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.3.0
-- chore(deps): update plugin com.diffplug.spotless to v6.23.3
-- chore(deps): update plugin org.springframework.boot to v3.2.1
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.17
-- chore(deps): update plugin org.springframework.boot to v3.2.2
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.18
-- chore(deps): update plugin com.diffplug.spotless to v6.24.0
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.0.0
 - chore(deps): update eclipse-temurin docker tag to v17.0.10_7-jre-jammy
 - chore(deps): update plugin com.diffplug.spotless to v6.25.0
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.1.0
-- chore(deps): update dependency gradle to v8.6
 - chore(deps): update cimg/openjdk docker tag to v17.0.10
 - chore(deps): update templates orb to v0.5.0
-- chore(deps): update plugin org.springframework.boot to v3.2.3
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.19
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.20
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.2.0
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.4.0
-- chore(deps): update plugin org.springframework.boot to v3.2.4
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.32
 - chore(deps): update dependency gradle to v8.7
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.21
+- Upgrade spring boot to `3.2.5`
 
 ### Removed
 - Dependency check plugin
