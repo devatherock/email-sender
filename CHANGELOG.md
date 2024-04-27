@@ -30,6 +30,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.21
 - Upgrade spring boot to `3.2.5`
 - chore(deps): update cimg/openjdk docker tag to v17.0.11
+- chore(deps): update eclipse-temurin docker tag to v17.0.11_9-jre-jammy
 
 ### Removed
 - Dependency check plugin
