@@ -33,6 +33,7 @@
 - chore(deps): update eclipse-temurin docker tag to v17.0.11_9-jre-jammy
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.3.0
 - chore(deps): update templates orb to v0.6.0
+- chore(deps): update plugin io.spring.dependency-management to v1.1.5
 
 ### Removed
 - Dependency check plugin
