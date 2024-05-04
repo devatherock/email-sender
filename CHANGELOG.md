@@ -34,6 +34,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.3.0
 - chore(deps): update templates orb to v0.6.0
 - chore(deps): update plugin io.spring.dependency-management to v1.1.5
+- chore(deps): update templates orb to v0.7.0
 
 ### Removed
 - Dependency check plugin
