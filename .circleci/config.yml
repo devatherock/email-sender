@@ -3,10 +3,9 @@ docker_auth: &docker_auth
     username: $DOCKER_USERNAME
     password: $DOCKER_PASSWORD
 
-slack_image: &slack_image
-  docker:
-    - image: devatherock/simple-slack:1.0.0
-      <<: *docker_auth
+vm_executor_image: &vm_executor_image
+  machine:
+    image: ubuntu-2204:2023.04.2
 
 work_directory: &work_directory
   working_directory: ~/email-sender
@@ -42,13 +41,11 @@ executors:
     <<: *resource_class
     <<: *work_directory
   machine-executor:
-    machine:
-      image: ubuntu-2204:2023.04.2
+    <<: *vm_executor_image
     resource_class: medium
     <<: *work_directory
   arm-executor:
-    machine:
-      image: ubuntu-2004:current
+    <<: *vm_executor_image
     resource_class: arm.medium
     <<: *work_directory
 
@@ -174,28 +171,25 @@ jobs:
           command: |
             curl $RENDER_DEPLOY_HOOK
 
-  notify:
-    <<: *slack_image
-    <<: *resource_class
-    environment:
-      TEXT: "Success: {{.CircleBuildUrl}} by {{.CircleUsername}}"
-      CHANNEL: general
-      TITLE: "Build completed"
-    steps:
-      - run: /bin/simpleslack -c "#33ad7f" || true
-
 workflows:
   version: 2.1
   build_publish:
     jobs:
+      - templates/slack:
+          name: notify
+          context:
+            - docker-credentials
+            - slack-webhook
+          filters:
+            branches:
+              only: master
       - templates/yaml_validator:
           name: validate_yamls
           context:
             - docker-credentials
           work_dir: '~/<< pipeline.parameters.repo_name >>'
-          filters:
-            branches:
-              only: master
+          requires:
+            - notify
       - build:
           context:
             - docker-credentials
@@ -231,33 +225,27 @@ workflows:
           runner: arm-executor
           requires:
             - dockerhub_readme
-      - notify:
-          context:
-            - docker-credentials
-            - slack-webhook
-          requires:
-            - integration_test_amd
-            - integration_test_arm
 
   release:
     jobs:
+      - templates/slack:
+          name: notify
+          context:
+            - docker-credentials
+            - slack-webhook
+          <<: *release_filter
       - publish_release:
           context:
             - docker-credentials
           <<: *release_filter
+          requires:
+            - notify
       - deploy:
           context:
             - docker-credentials
           <<: *release_filter
           requires:
             - publish_release
-      - notify:
-          context:
-            - docker-credentials
-            - slack-webhook
-          <<: *release_filter
-          requires:
-            - deploy
 
   pr_check:
     jobs:

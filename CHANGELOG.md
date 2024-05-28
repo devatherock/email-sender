@@ -12,27 +12,17 @@
 
 ### Changed
 - Upgraded `snakeyaml` to `2.2`
-- Upgraded dependency management plugin to `1.1.4`
-- Upgraded jre to `17.0.9`
 - chore: Configure Renovate
-- chore(deps): update dependency gradle to v8
-- chore(deps): update devatherock/email-sender docker tag to v1
 - Configure Mend Bolt for GitHub
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
-- chore(deps): update eclipse-temurin docker tag to v17.0.10_7-jre-jammy
 - chore(deps): update plugin com.diffplug.spotless to v6.25.0
-- chore(deps): update cimg/openjdk docker tag to v17.0.10
-- chore(deps): update templates orb to v0.5.0
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.2.0
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.32
 - chore(deps): update dependency gradle to v8.7
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.21
-- Upgrade spring boot to `3.2.5`
 - chore(deps): update cimg/openjdk docker tag to v17.0.11
 - chore(deps): update eclipse-temurin docker tag to v17.0.11_9-jre-jammy
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.3.0
-- chore(deps): update templates orb to v0.6.0
 - chore(deps): update plugin io.spring.dependency-management to v1.1.5
 - chore(deps): update templates orb to v0.7.0
 - chore(deps): update plugin org.springframework.boot to v3.3.0
