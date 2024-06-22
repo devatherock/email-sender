@@ -29,6 +29,7 @@
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.0
 - chore(deps): update dependency gradle to v8.8
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.0.0
+- chore(deps): update plugin org.springframework.boot to v3.3.1
 
 ### Removed
 - Dependency check plugin
