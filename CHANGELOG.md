@@ -30,6 +30,7 @@
 - chore(deps): update dependency gradle to v8.8
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.0.0
 - chore(deps): update plugin org.springframework.boot to v3.3.1
+- fix(deps): update dependency org.projectlombok:lombok to v1.18.34
 
 ### Removed
 - Dependency check plugin
