@@ -32,6 +32,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.3.1
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.34
 - chore(deps): update plugin io.spring.dependency-management to v1.1.6
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.22
 
 ### Removed
 - Dependency check plugin
