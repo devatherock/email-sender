@@ -34,6 +34,7 @@
 - chore(deps): update plugin io.spring.dependency-management to v1.1.6
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.22
 - chore(deps): update dependency gradle to v8.9
+- chore(deps): update plugin org.springframework.boot to v3.3.4
 
 ### Removed
 - Dependency check plugin
