@@ -9,3 +9,8 @@ services:
       EMAILSENDER_SMTP_USERNAME: apikey
       EMAILSENDER_SMTP_PASSWORD: testpwd
       EMAILSENDER_SMTP_PORT: 2500
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 2s
+      timeout: 60s
+      retries: 30

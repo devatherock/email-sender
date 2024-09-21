@@ -16,28 +16,20 @@
 - Configure Mend Bolt for GitHub
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
 - chore(deps): update plugin com.diffplug.spotless to v6.25.0
-- fix(deps): update dependency org.projectlombok:lombok to v1.18.32
-- chore(deps): update dependency gradle to v8.7
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.21
 - chore(deps): update cimg/openjdk docker tag to v17.0.11
 - chore(deps): update eclipse-temurin docker tag to v17.0.11_9-jre-jammy
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.45.3.0
-- chore(deps): update plugin io.spring.dependency-management to v1.1.5
 - chore(deps): update templates orb to v0.7.0
-- chore(deps): update plugin org.springframework.boot to v3.3.0
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.0
-- chore(deps): update dependency gradle to v8.8
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.0.0
-- chore(deps): update plugin org.springframework.boot to v3.3.1
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.34
 - chore(deps): update plugin io.spring.dependency-management to v1.1.6
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.22
 - chore(deps): update dependency gradle to v8.9
 - chore(deps): update plugin org.springframework.boot to v3.3.4
 - chore(deps): update eclipse-temurin docker tag to v17.0.12_7-jre-jammy
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.23
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.1.0
+- Upgraded `dnsjava` to `3.6.1`
 
 ### Removed
 - Dependency check plugin

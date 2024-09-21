@@ -9,11 +9,11 @@ ifeq ($(all), true)
 endif
 	./gradlew check
 integration-test:
-	docker-compose up &
+	docker compose up --wait
 	./gradlew integrationTest --tests '*ControllerIntegrationSpec*'
 	docker-compose down
 embedded-integration-test:
-	docker-compose -f docker-compose-embedded.yml up &
+	docker compose -f docker-compose-embedded.yml up --wait
 	./gradlew integrationTest --tests '*EmbeddedIntegrationSpec*'
 	docker-compose -f docker-compose-embedded.yml down	
 docker-build:
