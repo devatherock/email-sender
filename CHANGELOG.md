@@ -31,6 +31,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.1.0
 - Upgraded `dnsjava` to `3.6.1`
 - chore(deps): update dependency gradle to v8.10.1
+- fix(deps): update dependency dnsjava:dnsjava to v3.6.2
 
 ### Removed
 - Dependency check plugin
