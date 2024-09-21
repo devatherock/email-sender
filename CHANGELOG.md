@@ -36,6 +36,7 @@
 - chore(deps): update dependency gradle to v8.9
 - chore(deps): update plugin org.springframework.boot to v3.3.4
 - chore(deps): update eclipse-temurin docker tag to v17.0.12_7-jre-jammy
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.23
 
 ### Removed
 - Dependency check plugin
