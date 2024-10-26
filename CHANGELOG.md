@@ -38,6 +38,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.1.3
 - chore(deps): update eclipse-temurin docker tag to v17.0.13_11-jre-jammy
 - chore(deps): update plugin org.springframework.boot to v3.3.5
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.0.0
 
 ### Removed
 - Dependency check plugin
