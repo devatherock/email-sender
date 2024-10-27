@@ -9,34 +9,23 @@
 - [#25](https://github.com/devatherock/email-sender/issues/25): Custom error response for validation errors
 - [#14](https://github.com/devatherock/email-sender/issues/14): Tests for sends to bcc addresses
 - Unit and integration tests for sends using embedded SMTP server
+- [#3](https://github.com/devatherock/email-sender/issues/3): Built a native image using graalvm
 
 ### Changed
-- Upgraded `snakeyaml` to `2.2`
 - chore: Configure Renovate
 - Configure Mend Bolt for GitHub
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
 - chore(deps): update plugin com.diffplug.spotless to v6.25.0
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.5.0
 - chore(deps): update cimg/openjdk docker tag to v17.0.11
-- chore(deps): update eclipse-temurin docker tag to v17.0.11_9-jre-jammy
 - chore(deps): update templates orb to v0.7.0
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.0
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.0.0
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.34
 - chore(deps): update plugin io.spring.dependency-management to v1.1.6
-- chore(deps): update dependency gradle to v8.9
-- chore(deps): update plugin org.springframework.boot to v3.3.4
-- chore(deps): update eclipse-temurin docker tag to v17.0.12_7-jre-jammy
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.23
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.1.0
-- Upgraded `dnsjava` to `3.6.1`
-- chore(deps): update dependency gradle to v8.10.1
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.2
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.6.0
 - fix(deps): update dependency org.yaml:snakeyaml to v2.3
 - chore(deps): update dependency gradle to v8.10.2
-- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.46.1.3
-- chore(deps): update eclipse-temurin docker tag to v17.0.13_11-jre-jammy
 - chore(deps): update plugin org.springframework.boot to v3.3.5
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.0.0
 

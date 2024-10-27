@@ -3,14 +3,26 @@ services:
 
   email-sender:
     image: devatherock/email-sender:latest
+    container_name: email-sender-intg
     network_mode: "host"
     environment:
       EMAILSENDER_SMTP_HOST: localhost
       EMAILSENDER_SMTP_USERNAME: apikey
       EMAILSENDER_SMTP_PASSWORD: testpwd
       EMAILSENDER_SMTP_PORT: 2500
+
+  health:
+    image: alpine:3.20.3
+    network_mode: "host"
+    depends_on:
+      - email-sender
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:8080/actuator/health"]
       interval: 2s
       timeout: 60s
       retries: 30
+    command: |
+      sh -c '
+        wget -q -O - http://localhost:8080/actuator/health
+        sleep 120
+      '

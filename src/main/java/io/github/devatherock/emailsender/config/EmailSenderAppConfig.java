@@ -5,7 +5,9 @@ import java.util.List;
 import org.masukomi.aspirin.Aspirin;
 import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.mailer.MailerBuilder;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,13 +29,30 @@ import lombok.RequiredArgsConstructor;
  */
 @Configuration
 @RequiredArgsConstructor
-public class EmailSenderAppConfig {
+public class EmailSenderAppConfig implements BeanFactoryAware {
     private final EmailSenderProperties config;
+    private BeanFactory beanFactory;
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) {
+        this.beanFactory = beanFactory;
+    }
 
     @PostConstruct
     public void init() {
         if (config.getSmtp().getEmbedded().isEnabled()) {
             Aspirin.getConfiguration().setHostname(config.getSmtp().getEmbedded().getHost());
+        }
+        // Hacky conditional bean registration required for native image
+        // @ConditionalOnProperty(name = "emailsender.smtp.embedded.enabled",
+        // havingValue = "false") wasn't working
+        else {
+            // Initializes connection to an SMTP server when embedded SMTP isn't enabled
+            Mailer mailer = MailerBuilder
+                    .withSMTPServer(config.getSmtp().getHost(), config.getSmtp().getPort(),
+                            config.getSmtp().getUsername(), config.getSmtp().getPassword())
+                    .buildMailer();
+            ((ConfigurableBeanFactory) beanFactory).registerSingleton("mailer", mailer);
         }
     }
 
@@ -77,20 +96,5 @@ public class EmailSenderAppConfig {
                         .description("REST API to send emails")
                         .contact(new Contact().url("https://github.com/devatherock").name("devatherock"))
                         .license(new License().name("MIT")));
-    }
-
-    /**
-     * Initializes connection to an SMTP server when embedded SMTP isn't enabled
-     *
-     * @param config
-     * @return a mailer
-     */
-    @Bean
-    @ConditionalOnProperty(name = "emailsender.smtp.embedded.enabled", havingValue = "false")
-    public Mailer mailer(EmailSenderProperties config) {
-        return MailerBuilder
-                .withSMTPServer(config.getSmtp().getHost(), config.getSmtp().getPort(),
-                        config.getSmtp().getUsername(), config.getSmtp().getPassword())
-                .buildMailer();
     }
 }

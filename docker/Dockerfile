@@ -1,8 +1,17 @@
-FROM eclipse-temurin:17.0.13_11-jre-jammy
+FROM devatherock/graalvm:17-ol8 as graalvm
+
+COPY . /home/app
+WORKDIR /home/app
+
+ARG GRADLE_ARGS
+RUN ./gradlew nativeCompile ${GRADLE_ARGS}
+
+
+FROM gcr.io/distroless/base-debian11:latest
 
 LABEL maintainer="devatherock@gmail.com"
-LABEL io.github.devatherock.version="1.1.0"
+LABEL io.github.devatherock.version="2.0.0"
 
-COPY email-sender-*-boot.jar /emailsender.jar
+COPY --from=graalvm /home/app/build/native/nativeCompile/email-sender /app/emailsender
 
-CMD ["java", "-jar", "/emailsender.jar"]
+ENTRYPOINT ["/app/emailsender"]

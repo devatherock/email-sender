@@ -5,6 +5,8 @@
 code-formatter.xml
 checkstyle.xml
 codenarc.xml
+logs-intg.txt
+logs-intg-embedded.txt
 
 ### STS ###
 .apt_generated
