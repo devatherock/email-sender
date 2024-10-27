@@ -1,4 +1,4 @@
-FROM devatherock/graalvm:17-ol8 as graalvm
+FROM devatherock/graalvm:21-ol8 as graalvm
 
 COPY . /home/app
 WORKDIR /home/app
