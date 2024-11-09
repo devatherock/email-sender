@@ -29,6 +29,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.3.5
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.0.0
 - chore(deps): update devatherock/graalvm docker tag to v21
+- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.24
 
 ### Removed
 - Dependency check plugin
