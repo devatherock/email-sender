@@ -30,6 +30,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.0.0
 - chore(deps): update devatherock/graalvm docker tag to v21
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.24
+- fix(deps): update dependency org.projectlombok:lombok to v1.18.36
 
 ### Removed
 - Dependency check plugin
