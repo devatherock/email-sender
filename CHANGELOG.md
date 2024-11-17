@@ -31,6 +31,7 @@
 - chore(deps): update devatherock/graalvm docker tag to v21
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.24
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.36
+- chore(deps): update dependency gradle to v8.11
 
 ### Removed
 - Dependency check plugin
