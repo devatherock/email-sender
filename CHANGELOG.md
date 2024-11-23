@@ -33,6 +33,7 @@
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.36
 - chore(deps): update dependency gradle to v8.11
 - chore(deps): update dependency gradle to v8.11.1
+- chore(deps): update plugin org.springframework.boot to v3.4.0
 
 ### Removed
 - Dependency check plugin
