@@ -19,21 +19,17 @@
 - chore(deps): update cimg/openjdk docker tag to v17.0.11
 - chore(deps): update templates orb to v0.7.0
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.0
-- fix(deps): update dependency org.projectlombok:lombok to v1.18.34
 - chore(deps): update plugin io.spring.dependency-management to v1.1.6
-- fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.23
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.2
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.6.0
 - fix(deps): update dependency org.yaml:snakeyaml to v2.3
 - chore(deps): update dependency gradle to v8.10.2
-- chore(deps): update plugin org.springframework.boot to v3.3.5
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.0.0
 - chore(deps): update devatherock/graalvm docker tag to v21
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.24
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.36
-- chore(deps): update dependency gradle to v8.11
 - chore(deps): update dependency gradle to v8.11.1
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.7.0
+- Upgraded spring boot to `3.4.1`
 
 ### Removed
 - Dependency check plugin
