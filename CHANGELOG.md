@@ -30,6 +30,7 @@
 - chore(deps): update dependency gradle to v8.11.1
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.7.0
 - Upgraded spring boot to `3.4.1`
+- chore(deps): update plugin io.spring.dependency-management to v1.1.7
 
 ### Removed
 - Dependency check plugin
