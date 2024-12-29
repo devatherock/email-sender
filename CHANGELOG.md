@@ -32,6 +32,7 @@
 - Upgraded spring boot to `3.4.1`
 - chore(deps): update plugin io.spring.dependency-management to v1.1.7
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.10.4
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.1.0
 
 ### Removed
 - Dependency check plugin
