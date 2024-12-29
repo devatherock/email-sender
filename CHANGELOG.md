@@ -34,6 +34,7 @@
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.10.4
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.47.1.0
 - chore(deps): update alpine docker tag to v3.21.0
+- chore(deps): update dependency gradle to v8.12
 
 ### Removed
 - Dependency check plugin
