@@ -12,7 +12,7 @@ services:
       EMAILSENDER_SMTP_PORT: 2500
 
   health:
-    image: alpine:3.21.0
+    image: alpine:3.21.2
     network_mode: "host"
     depends_on:
       - email-sender
