@@ -39,6 +39,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.0
 - chore(deps): update alpine docker tag to v3.21.2
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.2
+- chore(deps): update plugin com.diffplug.spotless to v7
 
 ### Removed
 - Dependency check plugin
