@@ -41,6 +41,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.2
 - chore(deps): update plugin com.diffplug.spotless to v7
 - chore(deps): update plugin com.diffplug.spotless to v7.0.2
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.3
 
 ### Removed
 - Dependency check plugin
