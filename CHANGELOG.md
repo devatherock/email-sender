@@ -46,6 +46,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.4.2
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.25
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.3
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.4
 
 ### Removed
 - Dependency check plugin
