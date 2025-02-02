@@ -48,6 +48,7 @@
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.3
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.4
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.48.0.0
+- fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.1
 
 ### Removed
 - Dependency check plugin
