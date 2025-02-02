@@ -47,6 +47,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.25
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.3
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.4
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.48.0.0
 
 ### Removed
 - Dependency check plugin
