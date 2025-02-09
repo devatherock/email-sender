@@ -50,6 +50,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.48.0.0
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.1
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.10.5
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.49.0.0
 
 ### Removed
 - Dependency check plugin
