@@ -49,6 +49,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.4
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.48.0.0
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.1
+- chore(deps): update plugin org.graalvm.buildtools.native to v0.10.5
 
 ### Removed
 - Dependency check plugin
