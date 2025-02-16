@@ -53,6 +53,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.49.0.0
 - chore(deps): update alpine docker tag to v3.21.3
 - fix(deps): update dependency org.yaml:snakeyaml to v2.4
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.5
 
 ### Removed
 - Dependency check plugin
