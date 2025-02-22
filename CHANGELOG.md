@@ -54,6 +54,7 @@
 - chore(deps): update alpine docker tag to v3.21.3
 - fix(deps): update dependency org.yaml:snakeyaml to v2.4
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.5
+- chore(deps): update plugin org.springframework.boot to v3.4.3
 
 ### Removed
 - Dependency check plugin
