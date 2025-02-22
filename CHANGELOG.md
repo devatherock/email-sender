@@ -55,6 +55,7 @@
 - fix(deps): update dependency org.yaml:snakeyaml to v2.4
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.5
 - chore(deps): update plugin org.springframework.boot to v3.4.3
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.49.1.0
 
 ### Removed
 - Dependency check plugin
