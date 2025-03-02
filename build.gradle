@@ -36,7 +36,7 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.5'
 
-    testImplementation group: 'org.apache.groovy', name: 'groovy-json', version: '4.0.25'
+    testImplementation group: 'org.apache.groovy', name: 'groovy-json', version: '4.0.26'
     testImplementation group: 'org.spockframework', name: 'spock-core', version: spockVersion
     testImplementation group: 'org.spockframework', name: 'spock-spring', version: spockVersion
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
