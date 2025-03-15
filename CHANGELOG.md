@@ -58,6 +58,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.49.1.0
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.26
 - chore(deps): update dependency gradle to v8.13
+- chore(deps): update plugin org.graalvm.buildtools.native to v0.10.6
 
 ### Removed
 - Dependency check plugin
