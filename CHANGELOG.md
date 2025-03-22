@@ -59,6 +59,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.26
 - chore(deps): update dependency gradle to v8.13
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.10.6
+- chore(deps): update plugin org.springframework.boot to v3.4.4
 
 ### Removed
 - Dependency check plugin
