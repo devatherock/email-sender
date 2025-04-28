@@ -64,6 +64,7 @@
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.38
 - chore(deps): update plugin com.diffplug.spotless to v7.0.3
 - chore(deps): update plugin org.springframework.boot to v3.4.5
+- chore(deps): update dependency gradle to v8.14
 
 ### Removed
 - Dependency check plugin
