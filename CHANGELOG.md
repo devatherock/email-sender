@@ -66,6 +66,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.4.5
 - chore(deps): update dependency gradle to v8.14
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.8
+- chore(deps): update dependency gradle to v8.14.1
 
 ### Removed
 - Dependency check plugin
