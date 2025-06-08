@@ -71,6 +71,7 @@
 - chore(deps): update plugin com.diffplug.spotless to v7.0.4
 - chore(deps): update dependency gradle to v8.14.2
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.27
+- chore(deps): update alpine docker tag to v3.22.0
 
 ### Removed
 - Dependency check plugin
