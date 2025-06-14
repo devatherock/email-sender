@@ -72,6 +72,7 @@
 - chore(deps): update dependency gradle to v8.14.2
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.27
 - chore(deps): update alpine docker tag to v3.22.0
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.9
 
 ### Removed
 - Dependency check plugin
