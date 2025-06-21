@@ -73,6 +73,7 @@
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.27
 - chore(deps): update alpine docker tag to v3.22.0
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.9
+- chore(deps): update plugin org.springframework.boot to v3.5.3
 
 ### Removed
 - Dependency check plugin
