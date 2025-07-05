@@ -75,6 +75,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.9
 - chore(deps): update plugin org.springframework.boot to v3.5.3
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.50.1.0
+- chore(deps): update dependency gradle to v8.14.3
 
 ### Removed
 - Dependency check plugin
