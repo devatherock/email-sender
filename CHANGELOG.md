@@ -79,6 +79,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.50.2.0
 - chore(deps): update plugin com.diffplug.spotless to v7.1.0
 - chore(deps): update alpine docker tag to v3.22.1
+- chore(deps): update plugin org.springframework.boot to v3.5.4
 
 ### Removed
 - Dependency check plugin
