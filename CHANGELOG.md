@@ -82,6 +82,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.5.4
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.28
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.50.3.0
+- chore(deps): update plugin com.diffplug.spotless to v7.2.1
 
 ### Removed
 - Dependency check plugin
