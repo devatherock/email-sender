@@ -81,6 +81,7 @@
 - chore(deps): update alpine docker tag to v3.22.1
 - chore(deps): update plugin org.springframework.boot to v3.5.4
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.28
+- fix(deps): update dependency org.xerial:sqlite-jdbc to v3.50.3.0
 
 ### Removed
 - Dependency check plugin
