@@ -84,6 +84,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.50.3.0
 - chore(deps): update plugin com.diffplug.spotless to v7.2.1
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.0
+- chore(deps): update dependency gradle to v9
 
 ### Removed
 - Dependency check plugin
