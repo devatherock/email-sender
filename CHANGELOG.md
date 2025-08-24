@@ -87,6 +87,7 @@
 - chore(deps): update dependency gradle to v9
 - chore(deps): update plugin org.springframework.boot to v3.5.5
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.11
+- fix(deps): update dependency org.apache.groovy:groovy-json to v5
 
 ### Removed
 - Dependency check plugin
