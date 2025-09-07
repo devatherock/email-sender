@@ -91,6 +91,7 @@
 - fix(deps): update dependency org.yaml:snakeyaml to v2.5
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.40
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.12
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.13
 
 ### Removed
 - Dependency check plugin
