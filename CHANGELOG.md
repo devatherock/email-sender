@@ -94,6 +94,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.13
 - fix(deps): update dependency org.apache.groovy:groovy-json to v5.0.1
 - chore(deps): update plugin org.springframework.boot to v3.5.6
+- fix(deps): update dependency org.projectlombok:lombok to v1.18.42
 
 ### Removed
 - Dependency check plugin
