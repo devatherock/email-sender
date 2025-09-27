@@ -96,6 +96,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.5.6
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.42
 - chore(deps): update gradle to v9.1.0
+- chore(deps): update plugin org.graalvm.buildtools.native to v0.11.1
 
 ### Removed
 - Dependency check plugin
