@@ -98,6 +98,7 @@
 - chore(deps): update gradle to v9.1.0
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.1
 - chore(deps): update plugin com.diffplug.spotless to v8
+- chore(deps): update alpine docker tag to v3.22.2
 
 ### Removed
 - Dependency check plugin
