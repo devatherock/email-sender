@@ -101,6 +101,7 @@
 - chore(deps): update alpine docker tag to v3.22.2
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.2
 - fix(deps): update dependency org.apache.groovy:groovy-json to v5.0.2
+- chore(deps): update plugin org.springframework.boot to v3.5.7
 
 ### Removed
 - Dependency check plugin
