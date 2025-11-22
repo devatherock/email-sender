@@ -106,6 +106,7 @@
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.14
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.3
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.0.0
+- chore(deps): update gradle to v9.2.1
 
 ### Removed
 - Dependency check plugin
