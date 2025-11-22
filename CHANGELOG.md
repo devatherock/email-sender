@@ -107,6 +107,7 @@
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.3
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.0.0
 - chore(deps): update gradle to v9.2.1
+- chore(deps): update plugin org.springframework.boot to v3.5.8
 
 ### Removed
 - Dependency check plugin
