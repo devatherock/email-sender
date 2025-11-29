@@ -108,6 +108,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.0.0
 - chore(deps): update gradle to v9.2.1
 - chore(deps): update plugin org.springframework.boot to v3.5.8
+- chore(deps): update plugin com.diffplug.spotless to v8.1.0
 
 ### Removed
 - Dependency check plugin
