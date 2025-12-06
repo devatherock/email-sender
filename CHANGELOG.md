@@ -109,6 +109,7 @@
 - chore(deps): update gradle to v9.2.1
 - chore(deps): update plugin org.springframework.boot to v3.5.8
 - chore(deps): update plugin com.diffplug.spotless to v8.1.0
+- fix(deps): update dependency org.apache.groovy:groovy-json to v5.0.3
 
 ### Removed
 - Dependency check plugin
