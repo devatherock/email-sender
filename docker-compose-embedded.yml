@@ -10,7 +10,7 @@ services:
       EMAILSENDER_SMTP_EMBEDDED_HOST: devatherock.github.io
 
   health:
-    image: alpine:3.22.2
+    image: alpine:3.23.0
     network_mode: "host"
     depends_on:
       - email-sender
