@@ -111,6 +111,7 @@
 - chore(deps): update plugin com.diffplug.spotless to v8.1.0
 - fix(deps): update dependency org.apache.groovy:groovy-json to v5.0.3
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.1.0
+- chore(deps): update alpine docker tag to v3.23.0
 
 ### Removed
 - Dependency check plugin
