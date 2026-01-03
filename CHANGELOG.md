@@ -33,6 +33,7 @@
 - chore(deps): update alpine docker tag to v3.23.0
 - fix(deps): update spock monorepo to v2.4-groovy-4.0
 - chore(deps): update alpine docker tag to v3.23.2
+- chore(deps): update plugin org.springframework.boot to v3.5.9
 
 ### Removed
 - Dependency check plugin
