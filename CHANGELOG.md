@@ -32,6 +32,7 @@
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.1.0
 - chore(deps): update alpine docker tag to v3.23.0
 - fix(deps): update spock monorepo to v2.4-groovy-4.0
+- chore(deps): update alpine docker tag to v3.23.2
 
 ### Removed
 - Dependency check plugin
