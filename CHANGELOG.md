@@ -34,6 +34,7 @@
 - fix(deps): update spock monorepo to v2.4-groovy-4.0
 - chore(deps): update alpine docker tag to v3.23.2
 - chore(deps): update plugin org.springframework.boot to v3.5.9
+- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.15
 
 ### Removed
 - Dependency check plugin
