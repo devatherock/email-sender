@@ -36,6 +36,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.5.9
 - fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.15
 - chore(deps): update alpine docker tag to v3.24.1
+- chore(deps): update cimg/openjdk docker tag to v21.0.11
 
 ### Removed
 - Dependency check plugin
