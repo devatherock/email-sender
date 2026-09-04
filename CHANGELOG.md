@@ -15,7 +15,6 @@
 - chore: Configure Renovate
 - Configure Mend Bolt for GitHub
 - fix(deps): update dependency org.simplejavamail:simple-java-mail to `6.7.6`
-- chore(deps): update cimg/openjdk docker tag to v17.0.11
 - chore(deps): update templates orb to v0.7.0
 - chore(deps): update devatherock/graalvm docker tag to v21
 - chore(deps): update plugin io.spring.dependency-management to v1.1.7
@@ -23,20 +22,16 @@
 - fix(deps): update dependency jakarta.validation:jakarta.validation-api to v3.1.1
 - fix(deps): update dependency org.yaml:snakeyaml to v2.5
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.42
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.14
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.3
 - chore(deps): update gradle to v9.2.1
-- chore(deps): update plugin org.springframework.boot to v3.5.8
 - chore(deps): update plugin com.diffplug.spotless to v8.1.0
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.29
 - fix(deps): update dependency org.xerial:sqlite-jdbc to v3.51.1.0
-- chore(deps): update alpine docker tag to v3.23.0
 - fix(deps): update spock monorepo to v2.4-groovy-4.0
-- chore(deps): update alpine docker tag to v3.23.2
 - chore(deps): update plugin org.springframework.boot to v3.5.9
-- fix(deps): update dependency org.springdoc:springdoc-openapi-starter-webmvc-ui to v2.8.15
 - chore(deps): update alpine docker tag to v3.24.1
 - chore(deps): update cimg/openjdk docker tag to v21.0.11
+- Upgraded `springdoc-openapi-starter-webmvc-ui` to `2.9.0`
 
 ### Removed
 - Dependency check plugin

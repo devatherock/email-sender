@@ -7,6 +7,7 @@ checkstyle.xml
 codenarc.xml
 logs-intg.txt
 logs-intg-embedded.txt
+.DS_Store
 
 ### STS ###
 .apt_generated
