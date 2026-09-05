@@ -33,6 +33,7 @@
 - chore(deps): update cimg/openjdk docker tag to v21.0.11
 - Upgraded `springdoc-openapi-starter-webmvc-ui` to `2.9.0`
 - chore(deps): update plugin org.graalvm.buildtools.native to v0.11.5
+- chore(deps): update cimg/openjdk docker tag to v21.0.12
 
 ### Removed
 - Dependency check plugin
