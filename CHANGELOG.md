@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased]
+### Changed
+- chore(deps): update cimg/openjdk docker tag to v21.0.12
+
+## [2.0.0] - 2026-09-06
 ### Added
 - Used cache for integration tests
 - Integration tested the arm image
