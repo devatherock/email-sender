@@ -4,6 +4,7 @@
 ### Changed
 - chore(deps): update cimg/openjdk docker tag to v21.0.12
 - chore(deps): update plugin org.springframework.boot to v3.5.16
+- fix(deps): update dependency dnsjava:dnsjava to v3.6.5
 
 ## [2.0.0] - 2026-09-06
 ### Added
