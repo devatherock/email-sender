@@ -6,6 +6,7 @@
 - chore(deps): update plugin org.springframework.boot to v3.5.16
 - fix(deps): update dependency dnsjava:dnsjava to v3.6.5
 - fix(deps): update dependency org.apache.groovy:groovy-json to v4.0.33
+- chore(deps): update alpine docker tag to v3.24.2
 
 ## [2.0.0] - 2026-09-06
 ### Added
