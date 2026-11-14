@@ -10,6 +10,7 @@
 - fix(deps): update dependency org.projectlombok:lombok to v1.18.48
 - chore(deps): update alpine docker tag to v3.24.4
 - chore(deps): update cimg/openjdk docker tag to v21.0.13
+- chore(deps): update gradle to v9.9.1
 
 ## [2.0.0] - 2026-09-06
 ### Added
