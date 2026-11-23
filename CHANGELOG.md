@@ -12,6 +12,7 @@
 - chore(deps): update cimg/openjdk docker tag to v21.0.13
 - chore(deps): update gradle to v9.9.1
 - chore(deps): update gradle to v9.9.2
+- chore(deps): update plugin com.diffplug.spotless to v8.12.0
 
 ## [2.0.0] - 2026-09-06
 ### Added
